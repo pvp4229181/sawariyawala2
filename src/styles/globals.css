@@ -755,11 +755,34 @@ p {
   background: var(--cream-2);
 }
 .testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  overflow: hidden;
+  padding: 12px 0 24px;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 5%,
+    #000 95%,
+    transparent
+  );
+}
+.testimonial-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: testimonial-scroll 34s linear infinite;
+  will-change: transform;
+}
+.testimonial-grid:hover .testimonial-track,
+.testimonial-grid:focus-within .testimonial-track {
+  animation-play-state: paused;
+}
+.testimonial-set {
+  display: flex;
   gap: 20px;
 }
 .testimonial-grid blockquote {
+  width: clamp(300px, 30vw, 380px);
+  flex: 0 0 auto;
   margin: 0;
   background: var(--paper);
   padding: 35px;
@@ -785,6 +808,11 @@ p {
 .testimonial-grid small {
   font-weight: 400;
   color: var(--muted);
+}
+@keyframes testimonial-scroll {
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
 }
 .food-strip {
   position: relative;
@@ -2612,7 +2640,11 @@ body:has(.admin-login) > .site-footer {
     height: 460px;
   }
   .testimonial-grid {
-    grid-template-columns: 1fr;
+    margin-inline: -15px;
+  }
+  .testimonial-grid blockquote {
+    width: min(82vw, 330px);
+    padding: 28px;
   }
   .food-strip {
     height: 230px;
@@ -3021,5 +3053,12 @@ body:has(.admin-login) > .site-footer {
     scroll-behavior: auto !important;
     transition: none !important;
     animation: none !important;
+  }
+  .testimonial-grid {
+    overflow-x: auto;
+    mask-image: none;
+  }
+  .testimonial-track {
+    transform: none;
   }
 }

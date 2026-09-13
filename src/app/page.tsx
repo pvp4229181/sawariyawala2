@@ -36,6 +36,30 @@ const benefits = [
     copy: "Packed with care and sent without fuss.",
   },
 ];
+
+const reviews = [
+  {
+    name: "Aarav M.",
+    quote:
+      "The menu was easy to browse and everything arrived neatly packed.",
+  },
+  {
+    name: "Meera S.",
+    quote:
+      "A polished experience with the comfort of familiar Indian flavours.",
+  },
+  {
+    name: "Kabir R.",
+    quote:
+      "The catering presentation felt warm, thoughtful and effortless.",
+  },
+  {
+    name: "Riya P.",
+    quote:
+      "From ordering to delivery, every detail felt simple, fresh and well cared for.",
+  },
+];
+
 export default function Home() {
   const featured = seedProducts.filter((p) => p.featured).slice(0, 4);
   return (
@@ -222,30 +246,27 @@ export default function Home() {
               Kind words, <em>warm moments</em>
             </h2>
           </div>
-          <div className="testimonial-grid">
-            {[
-              [
-                "Aarav M.",
-                "The menu was easy to browse and everything arrived neatly packed.",
-              ],
-              [
-                "Meera S.",
-                "A polished experience with the comfort of familiar Indian flavours.",
-              ],
-              [
-                "Kabir R.",
-                "The catering presentation felt warm, thoughtful and effortless.",
-              ],
-            ].map(([name, quote]) => (
-              <blockquote key={name}>
-                <span>★★★★★</span>
-                <p>“{quote}”</p>
-                <cite>
-                  {name}
-                  <small>Demo testimonial - editable</small>
-                </cite>
-              </blockquote>
-            ))}
+          <div className="testimonial-grid" aria-label="Customer reviews">
+            <div className="testimonial-track">
+              {[0, 1].map((loop) => (
+                <div
+                  className="testimonial-set"
+                  aria-hidden={loop === 1 ? true : undefined}
+                  key={loop}
+                >
+                  {reviews.map(({ name, quote }) => (
+                    <blockquote key={`${loop}-${name}`}>
+                      <span aria-label="5 out of 5 stars">★★★★★</span>
+                      <p>“{quote}”</p>
+                      <cite>
+                        {name}
+                        <small>Demo testimonial - editable</small>
+                      </cite>
+                    </blockquote>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
