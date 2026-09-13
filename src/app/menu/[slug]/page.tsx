@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, Leaf } from "lucide-react";
+import { ArrowLeft, Check, Leaf, Star } from "lucide-react";
 import { notFound } from "next/navigation";
 import { AddButton } from "@/components/menu/add-button";
 import { ProductCard } from "@/components/menu/product-card";
@@ -31,6 +31,24 @@ export default async function ProductPage({
   const related = seedProducts
     .filter((x) => x.category === p.category && x.slug !== p.slug)
     .slice(0, 3);
+  const reviews = [
+    {
+      name: "Meera S.",
+      initials: "MS",
+      quote: `The ${p.name} arrived warm, fresh and beautifully packed. The flavour felt homemade without being heavy.`,
+    },
+    {
+      name: "Aarav P.",
+      initials: "AP",
+      quote: `A lovely balance of texture and spice. ${p.name} has become an easy repeat order for our family evenings.`,
+    },
+    {
+      name: "Nisha R.",
+      initials: "NR",
+      quote:
+        "Thoughtful presentation, generous portions and a smooth ordering experience from start to finish.",
+    },
+  ];
   return (
     <main>
       <section className="product-detail shell">
@@ -98,6 +116,53 @@ export default async function ProductPage({
               Menu pricing is editable catalogue data and may be updated before
               launch.
             </p>
+          </div>
+        </div>
+      </section>
+      <section className="section product-reviews-section">
+        <div className="shell">
+          <div className="product-reviews-head">
+            <div>
+              <span className="eyebrow">Customer reviews</span>
+              <h2>
+                Small bites. <em>Big smiles.</em>
+              </h2>
+              <p>
+                A taste of what customers enjoy about {p.name}, from the first
+                bite to the last.
+              </p>
+            </div>
+            <div className="review-score" aria-label="Rated 4.8 out of 5">
+              <strong>4.8</strong>
+              <div aria-hidden="true">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star key={index} />
+                ))}
+              </div>
+              <small>Demo customer feedback</small>
+            </div>
+          </div>
+          <div className="product-review-grid">
+            {reviews.map((review) => (
+              <article className="product-review-card" key={review.name}>
+                <div className="review-card-top">
+                  <span>{review.initials}</span>
+                  <div>
+                    <b>{review.name}</b>
+                    <small>Customer note</small>
+                  </div>
+                </div>
+                <div className="review-stars" aria-label="5 out of 5 stars">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <Star key={index} aria-hidden="true" />
+                  ))}
+                </div>
+                <blockquote>“{review.quote}”</blockquote>
+                <footer>
+                  <Check aria-hidden="true" /> Demo review for {p.name}
+                </footer>
+              </article>
+            ))}
           </div>
         </div>
       </section>

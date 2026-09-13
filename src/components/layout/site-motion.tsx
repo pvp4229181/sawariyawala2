@@ -9,6 +9,8 @@ const revealSelectors = [
   ".product-card",
   ".detail-image",
   ".detail-copy",
+  ".product-reviews-head > *",
+  ".product-review-card",
   ".story-image",
   ".story-copy > *",
   ".benefit-grid article",
@@ -44,7 +46,7 @@ export function SiteMotion() {
 
     for (const element of elements) {
       const parent = element.parentElement;
-      const index = parent ? groupIndexes.get(parent) ?? 0 : 0;
+      const index = parent ? (groupIndexes.get(parent) ?? 0) : 0;
       if (parent) groupIndexes.set(parent, index + 1);
 
       element.dataset.reveal = element.matches(
@@ -52,7 +54,7 @@ export function SiteMotion() {
       )
         ? "image"
         : element.matches(
-              ".product-card, .timeline-card, .icon-card-grid article",
+              ".product-card, .product-review-card, .timeline-card, .icon-card-grid article",
             )
           ? "card"
           : "up";

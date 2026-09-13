@@ -230,7 +230,9 @@ p {
   line-height: 1;
 }
 .header-wordmark strong {
-  font: italic 700 1.62rem/0.95 Georgia, serif;
+  font:
+    italic 700 1.62rem/0.95 Georgia,
+    serif;
   letter-spacing: -0.035em;
 }
 .header-wordmark small {
@@ -642,6 +644,48 @@ p {
 }
 .add-button:hover {
   background: var(--saffron-hover);
+}
+.item-stepper {
+  display: grid;
+  grid-template-columns: 36px 40px 36px;
+  align-items: center;
+  min-width: 112px;
+  height: 38px;
+  overflow: hidden;
+  border: 1px solid var(--saffron);
+  border-radius: 999px;
+  background: var(--saffron);
+  color: var(--navy);
+  box-shadow: 0 8px 20px rgba(242, 140, 0, 0.18);
+}
+.item-stepper button {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  transition:
+    background 180ms ease,
+    opacity 180ms ease;
+}
+.item-stepper button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+}
+.item-stepper button:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+.item-stepper svg {
+  width: 15px;
+  height: 15px;
+  stroke-width: 3;
+}
+.item-stepper > span {
+  font-size: 0.88rem;
+  font-weight: 950;
+  text-align: center;
 }
 .story-teaser {
   background: var(--navy);
@@ -1225,8 +1269,16 @@ p {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 12% 18%, rgba(242, 140, 0, 0.16), transparent 30%),
-    radial-gradient(circle at 92% 70%, rgba(20, 126, 120, 0.22), transparent 32%),
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(242, 140, 0, 0.16),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 92% 70%,
+      rgba(20, 126, 120, 0.22),
+      transparent 32%
+    ),
     var(--navy-deep);
   color: #fff;
 }
@@ -1235,7 +1287,8 @@ p {
   position: absolute;
   inset: auto 0 0;
   height: 170px;
-  background: url("/assets/brand/city-line-art.svg") center bottom/cover no-repeat;
+  background: url("/assets/brand/city-line-art.svg") center bottom/cover
+    no-repeat;
   opacity: 0.18;
   pointer-events: none;
 }
@@ -1636,6 +1689,12 @@ p {
   padding: 15px 24px;
   box-shadow: 0 12px 28px rgba(242, 140, 0, 0.2);
 }
+.detail-actions .item-stepper,
+.quick-copy .item-stepper {
+  grid-template-columns: 46px 48px 46px;
+  min-width: 140px;
+  height: 52px;
+}
 .detail-actions > span {
   display: flex;
   flex-direction: column;
@@ -1656,6 +1715,163 @@ p {
 .related {
   grid-template-columns: repeat(3, 1fr);
   max-width: 900px;
+}
+.product-reviews-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+  color: #fff;
+}
+.product-reviews-section::before {
+  content: "";
+  position: absolute;
+  top: -210px;
+  right: -120px;
+  width: 480px;
+  height: 480px;
+  border: 1px solid rgba(242, 140, 0, 0.15);
+  border-radius: 50%;
+  box-shadow: 0 0 0 70px rgba(242, 140, 0, 0.025);
+}
+.product-reviews-head {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 50px;
+  margin-bottom: 42px;
+}
+.product-reviews-head h2 {
+  max-width: 720px;
+  margin: 13px 0 12px;
+  color: #fff;
+  font-size: clamp(2.8rem, 5vw, 5.2rem);
+}
+.product-reviews-head h2 em {
+  color: var(--saffron);
+}
+.product-reviews-head p {
+  max-width: 590px;
+  color: #afbdc7;
+}
+.review-score {
+  min-width: 190px;
+  padding: 24px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(10px);
+}
+.review-score strong {
+  display: block;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  line-height: 0.9;
+}
+.review-score div,
+.review-stars {
+  display: flex;
+  gap: 3px;
+  margin-block: 10px;
+  color: var(--saffron);
+}
+.review-score svg,
+.review-stars svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+.review-score small {
+  color: #91a4b1;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.product-review-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.product-review-card {
+  display: flex;
+  min-height: 300px;
+  flex-direction: column;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.075),
+    rgba(255, 255, 255, 0.025)
+  );
+  transition:
+    transform 260ms ease,
+    border-color 260ms ease,
+    background 260ms ease;
+}
+.product-review-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(242, 140, 0, 0.45);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.035)
+  );
+}
+.review-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.review-card-top > span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--saffron);
+  color: var(--navy);
+  font-size: 0.75rem;
+  font-weight: 950;
+}
+.review-card-top > div {
+  display: flex;
+  flex-direction: column;
+}
+.review-card-top b {
+  font-size: 0.88rem;
+}
+.review-card-top small {
+  color: #91a4b1;
+  font-size: 0.68rem;
+}
+.product-review-card blockquote {
+  flex: 1;
+  margin: 6px 0 28px;
+  color: #e5ebee;
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  line-height: 1.5;
+}
+.product-review-card footer {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding-top: 17px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  color: #91a4b1;
+  font-size: 0.68rem;
+}
+.product-review-card footer svg {
+  width: 15px;
+  height: 15px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
 }
 
 /* Forms/contact */
@@ -3192,6 +3408,21 @@ body:has(.admin-login) > .site-footer {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+  .product-reviews-head {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 26px;
+  }
+  .review-score {
+    min-width: 220px;
+  }
+  .product-review-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .product-review-card:last-child {
+    grid-column: 1 / -1;
+    min-height: 240px;
+  }
   .related {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -3540,6 +3771,20 @@ body:has(.admin-login) > .site-footer {
   .detail-actions {
     align-items: flex-start;
     flex-direction: column;
+  }
+  .product-reviews-head {
+    margin-bottom: 30px;
+  }
+  .product-review-grid {
+    grid-template-columns: 1fr;
+  }
+  .product-review-card,
+  .product-review-card:last-child {
+    grid-column: auto;
+    min-height: 260px;
+  }
+  .product-review-card {
+    padding: 24px;
   }
   .related {
     grid-template-columns: 1fr 1fr;
