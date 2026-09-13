@@ -36,6 +36,16 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+If MongoDB or Docker is not installed, you can run the full application with a
+disposable local database instead:
+
+```bash
+npm run dev:memory
+```
+
+This mode is intended for local demos and checkout testing. Its data is removed
+when the development server stops.
+
 ## Environment
 
 Fill `.env.local` from `.env.example`:

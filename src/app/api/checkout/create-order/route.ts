@@ -14,9 +14,14 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     const message = safeError(error);
+    const status = message.includes(" is unavailable")
+      ? 409
+      : message.includes("is not configured")
+        ? 503
+        : 400;
     return Response.json(
       { error: message },
-      { status: /configured|unavailable/.test(message) ? 503 : 400 },
+      { status },
     );
   }
 }

@@ -6,16 +6,35 @@ import { checkoutSchema } from "@/lib/validators";
 import { Order } from "@/models/Order";
 import { Product } from "@/models/Product";
 import { siteConfig } from "@/config/site";
+import { seedProducts } from "@/data/seed-products";
+
+type CheckoutProduct = {
+  _id?: unknown;
+  name: string;
+  slug: string;
+  image: string;
+  price: number;
+};
 
 export async function createCheckoutOrder(input: unknown) {
   const data = checkoutSchema.parse(input);
   await connectDB();
   const slugs = data.items.map((item) => item.slug);
-  const products = await Product.find({
+  let products = (await Product.find({
     slug: { $in: slugs },
     active: true,
     inStock: true,
-  }).lean();
+  }).lean()) as unknown as CheckoutProduct[];
+  // The public menu intentionally falls back to the bundled catalog when a
+  // fresh database has not been seeded. Checkout must use the same catalog in
+  // that specific state, otherwise customers can add visible items but cannot
+  // order them. Once any products exist, database availability rules win.
+  if (!products.length && (await Product.estimatedDocumentCount()) === 0) {
+    products = seedProducts.filter(
+      (product) =>
+        slugs.includes(product.slug) && product.active && product.inStock,
+    );
+  }
   const lines = data.items.map((item) => {
     const product = products.find((value) => value.slug === item.slug);
     if (!product) throw new Error(`Product ${item.slug} is unavailable`);

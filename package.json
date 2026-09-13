@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:memory": "tsx scripts/dev-memory.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -33,6 +34,7 @@
     "@types/react-dom": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
+    "mongodb-memory-server": "^11.2.0",
     "prettier": "^3.9.6",
     "tailwindcss": "latest",
     "tsx": "latest",
