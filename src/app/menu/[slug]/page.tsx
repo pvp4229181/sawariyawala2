@@ -50,29 +50,53 @@ export default async function ProductPage({
             {p.badges[0] && <span>{p.badges[0]}</span>}
           </div>
           <div className="detail-copy">
-            <span className="eyebrow">{p.category.replace("-", " ")}</span>
-            <h1>{p.name}</h1>
-            <div className="detail-meta">
-              <b>{formatMoney(p.price)}</b>
-              <span>
-                <Leaf />
-                Pure vegetarian
+            <div className="detail-heading">
+              <span className="eyebrow">{p.category.replace("-", " ")}</span>
+              <span className="detail-stock">
+                <i /> Made fresh
               </span>
             </div>
-            <p className="lead">{p.description}</p>
-            <div className="ingredients">
-              <h3>What goes into it</h3>
-              {p.ingredients.map((x) => (
-                <span key={x}>
-                  <Check />
-                  {x}
+            <h1>{p.name}</h1>
+            <p className="detail-description">{p.description}</p>
+            <div className="detail-meta-grid">
+              <div className="detail-price">
+                <small>Price</small>
+                <strong>{formatMoney(p.price)}</strong>
+              </div>
+              <div className="detail-veg">
+                <i>
+                  <Leaf />
+                </i>
+                <span>
+                  <small>Dietary</small>
+                  <b>Pure vegetarian</b>
                 </span>
-              ))}
+              </div>
             </div>
-            <AddButton product={p} label="Add to Cart" />
+            <div className="ingredients">
+              <div className="ingredient-heading">
+                <span>Made with care</span>
+                <h3>Inside every bite</h3>
+              </div>
+              <div className="ingredient-list">
+                {p.ingredients.map((x) => (
+                  <span key={x}>
+                    <Check />
+                    {x}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="detail-actions">
+              <AddButton product={p} label="Add to Cart" />
+              <span>
+                <b>Ready when you are</b>
+                <small>Added directly to your basket</small>
+              </span>
+            </div>
             <p className="fine-print">
-              Pricing is editable demo catalogue data sourced from the supplied
-              brand lookbook.
+              Menu pricing is editable catalogue data and may be updated before
+              launch.
             </p>
           </div>
         </div>

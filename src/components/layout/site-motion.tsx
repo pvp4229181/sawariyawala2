@@ -7,6 +7,8 @@ const revealSelectors = [
   ".section-heading",
   ".trust-strip > div",
   ".product-card",
+  ".detail-image",
+  ".detail-copy",
   ".story-image",
   ".story-copy > *",
   ".benefit-grid article",
