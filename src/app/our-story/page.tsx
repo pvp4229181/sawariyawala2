@@ -1,9 +1,42 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Feather, Heart, Utensils } from "lucide-react";
+import {
+  ArrowRight,
+  Feather,
+  Heart,
+  PartyPopper,
+  Sparkles,
+  Store,
+  Utensils,
+} from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
 export const metadata: Metadata = { title: "Our Story" };
+
+const journey = [
+  {
+    number: "01",
+    label: "The everyday",
+    title: "Everyday favourites",
+    copy: "A focused street-food menu made for quick cravings, familiar comfort and easy ordering.",
+    icon: Utensils,
+  },
+  {
+    number: "02",
+    label: "The occasion",
+    title: "Celebrations",
+    copy: "Catering and party orders shaped around gatherings, thoughtful service and polished presentation.",
+    icon: PartyPopper,
+  },
+  {
+    number: "03",
+    label: "The experience",
+    title: "Hospitality",
+    copy: "A warm, scalable food experience designed for larger spaces, counters and memorable events.",
+    icon: Store,
+  },
+];
+
 export default function Story() {
   return (
     <main>
@@ -83,36 +116,40 @@ export default function Story() {
           </div>
         </div>
       </section>
-      <section className="section shell timeline">
-        <div className="section-heading">
-          <span className="eyebrow">An editable journey</span>
-          <h2>
-            Built to <em>grow with you</em>
-          </h2>
-        </div>
-        {[
-          [
-            "01",
-            "Everyday favourites",
-            "A clear, approachable street-food menu.",
-          ],
-          [
-            "02",
-            "Celebrations",
-            "Catering and party orders with polished presentation.",
-          ],
-          [
-            "03",
-            "Hospitality",
-            "A scalable brand system for larger spaces and events.",
-          ],
-        ].map(([n, t, c]) => (
-          <div className="timeline-row" key={n}>
-            <b>{n}</b>
-            <h3>{t}</h3>
-            <p>{c}</p>
+      <section className="section journey-section" id="journey">
+        <div className="shell timeline">
+          <div className="timeline-intro">
+            <span className="eyebrow">An evolving journey</span>
+            <h2>
+              Made for today.
+              <br />
+              Built to <em>grow with you.</em>
+            </h2>
+            <p>
+              From an everyday craving to a room full of guests, each chapter
+              keeps the food familiar and the experience thoughtfully made.
+            </p>
+            <div className="timeline-note">
+              <Sparkles />
+              <span>One food-first idea, designed to scale beautifully.</span>
+            </div>
           </div>
-        ))}
+          <div className="timeline-list">
+            {journey.map(({ number, label, title, copy, icon: Icon }) => (
+              <article className="timeline-card" key={number}>
+                <div className="timeline-icon">
+                  <Icon />
+                </div>
+                <div className="timeline-content">
+                  <span>{label}</span>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </div>
+                <b aria-hidden="true">{number}</b>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
       <section className="cta-band">
         <div className="shell">
