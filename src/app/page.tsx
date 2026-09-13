@@ -41,21 +41,23 @@ const benefits = [
 const reviews = [
   {
     name: "Aarav M.",
-    quote:
-      "The menu was easy to browse and everything arrived neatly packed.",
+    initials: "AM",
+    quote: "The menu was easy to browse and everything arrived neatly packed.",
   },
   {
     name: "Meera S.",
+    initials: "MS",
     quote:
       "A polished experience with the comfort of familiar Indian flavours.",
   },
   {
     name: "Kabir R.",
-    quote:
-      "The catering presentation felt warm, thoughtful and effortless.",
+    initials: "KR",
+    quote: "The catering presentation felt warm, thoughtful and effortless.",
   },
   {
     name: "Riya P.",
+    initials: "RP",
     quote:
       "From ordering to delivery, every detail felt simple, fresh and well cared for.",
   },
@@ -271,14 +273,22 @@ export default function Home() {
                   aria-hidden={loop === 1 ? true : undefined}
                   key={loop}
                 >
-                  {reviews.map(({ name, quote }) => (
+                  {reviews.map(({ name, initials, quote }, index) => (
                     <blockquote key={`${loop}-${name}`}>
-                      <span aria-label="5 out of 5 stars">★★★★★</span>
+                      <div className="testimonial-card-top">
+                        <span aria-label="5 out of 5 stars">★★★★★</span>
+                        <small aria-hidden="true">
+                          {String(index + 1).padStart(2, "0")}
+                        </small>
+                      </div>
                       <p>“{quote}”</p>
-                      <cite>
-                        {name}
-                        <small>Demo testimonial - editable</small>
-                      </cite>
+                      <footer>
+                        <span aria-hidden="true">{initials}</span>
+                        <cite>
+                          {name}
+                          <small>Demo testimonial — editable</small>
+                        </cite>
+                      </footer>
                     </blockquote>
                   ))}
                 </div>
