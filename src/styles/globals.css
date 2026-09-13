@@ -244,7 +244,7 @@ p {
   text-transform: uppercase;
 }
 .footer-brand > img {
-  width: 190px;
+  width: 165px;
   height: auto;
   border-radius: 8px;
 }
@@ -2704,7 +2704,7 @@ p {
 .site-footer {
   background: var(--cream-2);
   color: var(--ink);
-  padding-top: 80px;
+  padding-top: 48px;
   position: relative;
 }
 .footer-flourish {
@@ -2717,24 +2717,26 @@ p {
 .footer-grid {
   display: grid;
   grid-template-columns: 1.4fr 0.6fr 1fr;
-  gap: 80px;
+  gap: 55px;
   position: relative;
   z-index: 1;
 }
 .footer-brand > p {
   max-width: 390px;
   color: var(--muted);
-  margin-top: 20px;
+  margin: 12px 0 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
 }
 .footer-grid h3 {
   font: 600 1.35rem var(--font-display);
   color: var(--navy);
-  margin-bottom: 22px;
+  margin-bottom: 14px;
 }
 .footer-grid > div:nth-child(2) {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 .footer-grid > div:nth-child(2) a:hover {
   color: var(--saffron);
@@ -2745,7 +2747,7 @@ p {
   gap: 9px;
   color: var(--muted);
   font-size: 0.85rem;
-  margin: 10px 0;
+  margin: 7px 0;
 }
 .footer-grid > div:nth-child(3) svg {
   width: 16px;
@@ -2757,8 +2759,8 @@ p {
   gap: 8px;
 }
 .socials a {
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   border: 1px solid #c9b89f;
   border-radius: 50%;
   display: grid;
@@ -2769,8 +2771,8 @@ p {
 }
 .footer-bottom {
   border-top: 1px solid #d8c7ae;
-  margin-top: 60px;
-  padding: 22px 0;
+  margin-top: 34px;
+  padding: 15px 0;
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -3966,8 +3968,28 @@ body:has(.admin-login) > .site-footer {
     padding: 30px 22px;
   }
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
+    grid-template-columns: 0.72fr 1.28fr;
+    column-gap: 18px;
+    row-gap: 24px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+  .footer-grid h3 {
+    margin-bottom: 10px;
+  }
+  .footer-grid > div:nth-child(3) p {
+    font-size: 0.76rem;
+  }
+  .site-footer {
+    padding-top: 36px;
+  }
+  .footer-brand > img {
+    width: 145px;
+  }
+  .footer-bottom {
+    margin-top: 26px;
+    padding-block: 13px;
   }
   .footer-bottom {
     flex-direction: column;
