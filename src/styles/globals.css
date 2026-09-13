@@ -54,6 +54,9 @@ button {
 img {
   max-width: 100%;
 }
+img:not([data-nimg="fill"]) {
+  height: auto;
+}
 h1,
 h2,
 h3,
@@ -2446,6 +2449,192 @@ body:has(.admin-login) > .site-footer {
   color: #89959e;
 }
 
+/* Site motion system */
+.site-header {
+  animation: header-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.site-header + main {
+  animation: page-enter 0.5s ease-out both;
+}
+.home-hero > img,
+.page-hero > img {
+  animation: hero-drift 18s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+.hero-copy > .eyebrow,
+.hero-copy > h1,
+.hero-copy > p,
+.hero-copy > .hero-actions,
+.hero-copy > .hero-mini,
+.page-hero-copy > * {
+  opacity: 0;
+  animation: hero-copy-enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--intro-delay, 0.12s);
+}
+.hero-copy > h1,
+.page-hero-copy > h1 {
+  --intro-delay: 0.2s;
+}
+.hero-copy > p,
+.page-hero-copy > p {
+  --intro-delay: 0.32s;
+}
+.hero-copy > .hero-actions {
+  --intro-delay: 0.42s;
+}
+.hero-copy > .hero-mini {
+  --intro-delay: 0.54s;
+}
+.food-strip img {
+  animation: panorama-drift 16s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+.button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 0 0 rgba(242, 140, 0, 0);
+}
+.button::after {
+  content: "";
+  position: absolute;
+  inset: -3px auto -3px -45%;
+  width: 35%;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.48),
+    transparent
+  );
+  transform: skewX(-18deg);
+  transition: left 0.55s ease;
+}
+.button:hover {
+  box-shadow: 0 10px 26px rgba(242, 140, 0, 0.22);
+}
+.button:hover::after {
+  left: 115%;
+}
+.button svg,
+.text-link svg {
+  transition: transform 0.25s ease;
+}
+.button:hover svg,
+.text-link:hover svg {
+  transform: translateX(4px);
+}
+.desktop-nav a:hover::after {
+  right: 0;
+}
+.icon-button svg {
+  transition: transform 0.25s ease;
+}
+.icon-button:hover svg {
+  transform: scale(1.1) rotate(-4deg);
+}
+.cart-trigger span {
+  animation: cart-badge-enter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.story-image img,
+.framed-image img,
+.detail-image img,
+.quality-banner img {
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.story-image:hover img,
+.framed-image:hover img,
+.detail-image:hover img,
+.quality-banner:hover img {
+  transform: scale(1.045);
+}
+.benefit-grid article,
+.philosophy-grid article,
+.icon-card-grid article,
+.testimonial-grid blockquote {
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+.benefit-grid article:hover,
+.philosophy-grid article:hover,
+.icon-card-grid article:hover,
+.testimonial-grid blockquote:hover {
+  transform: translateY(-6px);
+  border-color: rgba(242, 140, 0, 0.5);
+  box-shadow: 0 18px 42px rgba(14, 31, 44, 0.1);
+}
+[data-reveal] {
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal="image"] {
+  transform: translateY(20px) scale(0.97);
+}
+[data-reveal="card"] {
+  transform: translateY(34px) scale(0.985);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+[data-reveal].is-visible.product-card:hover,
+[data-reveal].is-visible.timeline-card:hover,
+.icon-card-grid article[data-reveal].is-visible:hover {
+  transform: translateY(-6px);
+}
+@keyframes header-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+}
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes hero-copy-enter {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hero-drift {
+  from {
+    transform: scale(1.01) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.075) translate3d(-0.8%, -0.6%, 0);
+  }
+}
+@keyframes panorama-drift {
+  from {
+    transform: scale(1.02) translateX(-0.6%);
+  }
+  to {
+    transform: scale(1.08) translateX(0.8%);
+  }
+}
+@keyframes cart-badge-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.45);
+  }
+}
+
 @media (max-width: 1050px) {
   :root {
     --shell: min(100% - 34px, 920px);
@@ -3060,5 +3249,12 @@ body:has(.admin-login) > .site-footer {
   }
   .testimonial-track {
     transform: none;
+  }
+  [data-reveal],
+  .hero-copy > *,
+  .page-hero-copy > * {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
   }
 }
