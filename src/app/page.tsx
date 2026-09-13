@@ -257,6 +257,17 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      <section
+        className="food-strip"
+        aria-label="A celebration of Indian street food"
+      >
+        <Image
+          src="/assets/banner-ai/home-food-panorama-v3.png"
+          alt="An illustrated Indian street-food courtyard with chefs, diners and Sawariyawala favourites"
+          fill
+          sizes="100vw"
+        />
+      </section>
       <section className="section testimonials">
         <div className="shell">
           <div className="section-heading center">
@@ -296,14 +307,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-      <section className="food-strip">
-        <Image
-          src="/assets/banner-ai/home-food-panorama-v2.png"
-          alt="Illustrated Indian street-food market with Sawariyawala favourites"
-          fill
-          sizes="100vw"
-        />
       </section>
     </main>
   );

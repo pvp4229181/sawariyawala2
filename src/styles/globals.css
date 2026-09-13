@@ -1033,12 +1033,12 @@ p {
 .food-strip {
   position: relative;
   overflow: hidden;
-  height: clamp(220px, 20vw, 360px);
-  background: var(--cream-2);
+  height: clamp(280px, 33.333vw, 480px);
+  background: var(--navy-deep);
 }
 .food-strip img {
   object-fit: cover;
-  object-position: center 48%;
+  object-position: center;
 }
 
 /* Inner pages */
@@ -3493,7 +3493,7 @@ body:has(.admin-login) > .site-footer {
     padding: 28px;
   }
   .food-strip {
-    height: 230px;
+    height: 300px;
   }
   .product-detail-grid {
     grid-template-columns: 1fr;
@@ -3776,7 +3776,7 @@ body:has(.admin-login) > .site-footer {
     padding: 45px 25px;
   }
   .food-strip {
-    height: 240px;
+    height: 270px;
   }
   .page-hero {
     height: 400px;
