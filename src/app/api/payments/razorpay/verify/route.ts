@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { COMMERCE_ENABLED, COMMERCE_PAUSED_MESSAGE } from "@/config/features";
 import { connectDB } from "@/lib/db";
 import { verifyPaymentSignature } from "@/lib/razorpay";
 import { rateLimit, requestKey } from "@/lib/rate-limit";
@@ -11,6 +12,9 @@ const schema = z.object({
   razorpay_signature: z.string().length(64),
 });
 export async function POST(request: Request) {
+  if (!COMMERCE_ENABLED)
+    return Response.json({ error: COMMERCE_PAUSED_MESSAGE }, { status: 503 });
+
   if (!rateLimit(`payment:${requestKey(request)}`, 10, 60_000))
     return Response.json({ error: "Too many attempts." }, { status: 429 });
   try {

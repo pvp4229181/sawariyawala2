@@ -16,7 +16,7 @@ export const metadata: Metadata = { title: "Why Us" };
 const promises = [
   [
     "Clear at every step",
-    "Straightforward choices, transparent totals and an ordering flow that respects your time.",
+    "Straightforward choices and a clear enquiry process that respects your time.",
   ],
   [
     "Care in every detail",
@@ -91,11 +91,11 @@ export default function WhyUs() {
             </h2>
             <ul className="check-list">
               {[
-                "Server-authoritative pricing and secure checkout",
+                "Clear menu pricing and helpful catering guidance",
                 "Pure vegetarian demo catalogue",
                 "Food-safe, presentation-ready packaging direction",
-                "COD and verified Razorpay payment options",
-                "Flexible ordering for everyday and event needs",
+                "Direct support for catering and event enquiries",
+                "Flexible menus for everyday and event needs",
               ].map((x) => (
                 <li key={x}>
                   <Check />
@@ -104,7 +104,7 @@ export default function WhyUs() {
               ))}
             </ul>
             <Link href="/menu" className="button">
-              Order Now <ArrowRight />
+              Explore Menu <ArrowRight />
             </Link>
           </div>
         </div>

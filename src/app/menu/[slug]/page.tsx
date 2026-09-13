@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, Check, Leaf, Star } from "lucide-react";
 import { notFound } from "next/navigation";
 import { AddButton } from "@/components/menu/add-button";
+import { COMMERCE_ENABLED } from "@/config/features";
 import { ProductCard } from "@/components/menu/product-card";
 import { seedProducts } from "@/data/seed-products";
 import { formatMoney } from "@/lib/money";
@@ -46,7 +47,7 @@ export default async function ProductPage({
       name: "Nisha R.",
       initials: "NR",
       quote:
-        "Thoughtful presentation, generous portions and a smooth ordering experience from start to finish.",
+        "Thoughtful presentation, generous portions and a smooth experience from start to finish.",
     },
   ];
   return (
@@ -108,8 +109,16 @@ export default async function ProductPage({
             <div className="detail-actions">
               <AddButton product={p} label="Add to Cart" />
               <span>
-                <b>Ready when you are</b>
-                <small>Added directly to your basket</small>
+                <b>
+                  {COMMERCE_ENABLED
+                    ? "Ready when you are"
+                    : "Online ordering paused"}
+                </b>
+                <small>
+                  {COMMERCE_ENABLED
+                    ? "Added directly to your basket"
+                    : "Returning in a future update"}
+                </small>
               </span>
             </div>
             <p className="fine-print">

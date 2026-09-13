@@ -18,7 +18,7 @@ const journey = [
     number: "01",
     label: "The everyday",
     title: "Everyday favourites",
-    copy: "A focused street-food menu made for quick cravings, familiar comfort and easy ordering.",
+    copy: "A focused street-food menu made for quick cravings, familiar comfort and easy sharing.",
     icon: Utensils,
   },
   {

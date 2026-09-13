@@ -1,6 +1,7 @@
 "use client";
 import { Minus, Plus } from "lucide-react";
 import { toast } from "sonner";
+import { COMMERCE_ENABLED } from "@/config/features";
 import type { ProductDTO } from "@/types";
 import { useCart } from "@/store/cart-store";
 
@@ -10,6 +11,27 @@ export function AddButton({
 }: {
   product: ProductDTO;
   label?: string;
+}) {
+  if (!COMMERCE_ENABLED) {
+    return (
+      <span
+        className="commerce-paused"
+        aria-label="Online ordering coming soon"
+      >
+        Ordering soon
+      </span>
+    );
+  }
+
+  return <EnabledAddButton product={product} label={label} />;
+}
+
+function EnabledAddButton({
+  product,
+  label,
+}: {
+  product: ProductDTO;
+  label: string;
 }) {
   const add = useCart((s) => s.add);
   const setQuantity = useCart((s) => s.setQuantity);

@@ -2,9 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Search, ShoppingBag, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useCart } from "@/store/cart-store";
 
 const links = [
   ["/", "Home"],
@@ -15,10 +14,7 @@ const links = [
 ];
 export function Header() {
   const pathname = usePathname(),
-    [mobile, setMobile] = useState(false),
-    items = useCart((s) => s.items),
-    openCart = useCart((s) => s.openDrawer);
-  const count = items.reduce((sum, line) => sum + line.quantity, 0);
+    [mobile, setMobile] = useState(false);
   useEffect(() => setMobile(false), [pathname]);
   return (
     <header className="site-header">
@@ -55,16 +51,8 @@ export function Header() {
           >
             <Search size={19} />
           </Link>
-          <button
-            className="icon-button cart-trigger"
-            onClick={openCart}
-            aria-label={`Open cart with ${count} items`}
-          >
-            <ShoppingBag size={20} />
-            {count > 0 && <span>{count}</span>}
-          </button>
           <Link href="/menu" className="button button-small">
-            Order Now
+            View Menu
           </Link>
           <button
             className="icon-button mobile-toggle"
@@ -81,8 +69,8 @@ export function Header() {
             {label}
           </Link>
         ))}
-        <Link className="button" href="/track-order">
-          Track Order
+        <Link className="button" href="/menu">
+          Explore Menu
         </Link>
       </div>
     </header>

@@ -59,7 +59,7 @@ const reviews = [
     name: "Riya P.",
     initials: "RP",
     quote:
-      "From ordering to delivery, every detail felt simple, fresh and well cared for.",
+      "From the first enquiry to the final serving, every detail felt simple, fresh and well cared for.",
   },
 ];
 
@@ -76,8 +76,8 @@ const guestBenefits = [
   },
   {
     icon: ShoppingBag,
-    title: "Easy ordering",
-    copy: "A simple path from menu to payment, with COD and Razorpay.",
+    title: "Easy enquiries",
+    copy: "A simple path to explore the menu and plan food for your occasion.",
   },
   {
     icon: Award,
@@ -115,8 +115,8 @@ export default function Home() {
             brought together with a premium Sawariyawala touch.
           </p>
           <div className="hero-actions">
-            <Link href="/menu" className="button">
-              Order Now <ArrowRight />
+            <Link href="/catering" className="button">
+              Plan an Event <ArrowRight />
             </Link>
             <Link href="/menu" className="button ghost">
               Explore Menu

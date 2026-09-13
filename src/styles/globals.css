@@ -645,6 +645,26 @@ p {
 .add-button:hover {
   background: var(--saffron-hover);
 }
+.commerce-paused {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(16, 45, 67, 0.14);
+  border-radius: 999px;
+  background: #eee5d7;
+  padding: 8px 13px;
+  color: #756f67;
+  font-size: 0.72rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+.detail-actions .commerce-paused,
+.quick-copy .commerce-paused {
+  min-height: 50px;
+  padding-inline: 20px;
+  font-size: 0.8rem;
+}
 .item-stepper {
   display: grid;
   grid-template-columns: 36px 40px 36px;

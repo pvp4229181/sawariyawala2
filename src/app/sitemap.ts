@@ -9,7 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/why-us",
     "/catering",
     "/contact",
-    "/cart",
     "/track-order",
   ];
   return [

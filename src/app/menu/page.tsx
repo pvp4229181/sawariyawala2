@@ -35,7 +35,7 @@ export default async function MenuPage() {
             <em>favourite.</em>
           </>
         }
-        copy="Easy-to-love Indian street food, clearly organised and ready for quick ordering."
+        copy="Easy-to-love Indian street food, clearly organised and ready to explore."
         image="/assets/hero-ai/menu-hero-v2.png"
       />
       <MenuExplorer products={await products()} />
