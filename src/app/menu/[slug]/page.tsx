@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, Leaf, Star } from "lucide-react";
+import { ArrowLeft, Check, Leaf } from "lucide-react";
 import { notFound } from "next/navigation";
 import { AddButton } from "@/components/menu/add-button";
 import { COMMERCE_ENABLED } from "@/config/features";
 import { ProductCard } from "@/components/menu/product-card";
+import { ReviewForm } from "@/components/reviews/review-form";
 import { seedProducts } from "@/data/seed-products";
 import { formatMoney } from "@/lib/money";
 
@@ -32,24 +33,6 @@ export default async function ProductPage({
   const related = seedProducts
     .filter((x) => x.category === p.category && x.slug !== p.slug)
     .slice(0, 3);
-  const reviews = [
-    {
-      name: "Meera S.",
-      initials: "MS",
-      quote: `The ${p.name} arrived warm, fresh and beautifully packed. The flavour felt homemade without being heavy.`,
-    },
-    {
-      name: "Aarav P.",
-      initials: "AP",
-      quote: `A lovely balance of texture and spice. ${p.name} has become an easy repeat order for our family evenings.`,
-    },
-    {
-      name: "Nisha R.",
-      initials: "NR",
-      quote:
-        "Thoughtful presentation, generous portions and a smooth experience from start to finish.",
-    },
-  ];
   return (
     <main>
       <section className="product-detail shell">
@@ -128,51 +111,28 @@ export default async function ProductPage({
           </div>
         </div>
       </section>
-      <section className="section product-reviews-section">
-        <div className="shell">
-          <div className="product-reviews-head">
-            <div>
-              <span className="eyebrow">Customer reviews</span>
-              <h2>
-                Small bites. <em>Big smiles.</em>
-              </h2>
-              <p>
-                A taste of what customers enjoy about {p.name}, from the first
-                bite to the last.
-              </p>
-            </div>
-            <div className="review-score" aria-label="Rated 4.8 out of 5">
-              <strong>4.8</strong>
-              <div aria-hidden="true">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Star key={index} />
-                ))}
-              </div>
-              <small>Demo customer feedback</small>
+      <section className="section review-submit-section">
+        <div className="shell review-submit-layout">
+          <div className="review-submit-intro">
+            <span className="eyebrow light">Share your experience</span>
+            <h2>
+              Tried {p.name}?
+              <br />
+              <em>Tell us what you think.</em>
+            </h2>
+            <p>
+              Your feedback helps us refine every recipe and helps future guests
+              discover their next favourite.
+            </p>
+            <div className="review-promise">
+              <Check aria-hidden="true" />
+              <span>
+                <b>Real feedback, thoughtfully reviewed</b>
+                <small>Every submission is checked before publication.</small>
+              </span>
             </div>
           </div>
-          <div className="product-review-grid">
-            {reviews.map((review) => (
-              <article className="product-review-card" key={review.name}>
-                <div className="review-card-top">
-                  <span>{review.initials}</span>
-                  <div>
-                    <b>{review.name}</b>
-                    <small>Customer note</small>
-                  </div>
-                </div>
-                <div className="review-stars" aria-label="5 out of 5 stars">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <Star key={index} aria-hidden="true" />
-                  ))}
-                </div>
-                <blockquote>“{review.quote}”</blockquote>
-                <footer>
-                  <Check aria-hidden="true" /> Demo review for {p.name}
-                </footer>
-              </article>
-            ))}
-          </div>
+          <ReviewForm productName={p.name} productSlug={p.slug} />
         </div>
       </section>
       <section className="section cream-section">

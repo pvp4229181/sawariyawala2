@@ -21,16 +21,21 @@ export function Header() {
       <div className="header-inner shell">
         <Link href="/" className="header-logo" aria-label="Sawariyawala home">
           <Image
+            className="header-logo-image"
             src="/assets/brand/logo-primary.png"
-            alt=""
+            alt="Sawariyawala Food and Caterers"
             width={1130}
             height={883}
             priority
           />
-          <span className="header-wordmark" aria-hidden="true">
-            <strong>Sawariyawala</strong>
-            <small>Food &amp; Caterers</small>
-          </span>
+          <Image
+            className="header-wordmark-image"
+            src="/assets/brand/wordmark-primary.svg"
+            alt=""
+            width={1129}
+            height={236}
+            priority
+          />
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">
           {links.map(([href, label]) => (

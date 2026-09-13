@@ -9,8 +9,8 @@ const revealSelectors = [
   ".product-card",
   ".detail-image",
   ".detail-copy",
-  ".product-reviews-head > *",
-  ".product-review-card",
+  ".review-submit-intro > *",
+  ".review-form-card",
   ".story-image",
   ".story-copy > *",
   ".benefit-grid article",
@@ -54,7 +54,7 @@ export function SiteMotion() {
       )
         ? "image"
         : element.matches(
-              ".product-card, .product-review-card, .timeline-card, .icon-card-grid article",
+              ".product-card, .review-form-card, .timeline-card, .icon-card-grid article",
             )
           ? "card"
           : "up";
