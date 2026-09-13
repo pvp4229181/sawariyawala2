@@ -16,6 +16,8 @@ async function products() {
     const values = await Product.find({ active: true })
       .sort({ sortOrder: 1, name: 1 })
       .lean();
+    if (!values.length && (await Product.estimatedDocumentCount()) === 0)
+      return seedProducts;
     return JSON.parse(JSON.stringify(values)) as ProductDTO[];
   } catch {
     return seedProducts;
