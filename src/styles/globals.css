@@ -22,6 +22,7 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 body {
   margin: 0;
@@ -3570,20 +3571,12 @@ body:has(.admin-login) > .site-footer {
     height: 64px;
     gap: 7px;
   }
-  .header-logo img {
+  .header-logo .header-logo-image {
     height: 58px;
   }
-  .header-wordmark {
+  .header-logo .header-wordmark-image {
     width: 170px;
-    height: 44px;
-    padding-inline: 10px;
-  }
-  .header-wordmark strong {
-    font-size: 1.34rem;
-  }
-  .header-wordmark small {
-    font-size: 0.44rem;
-    letter-spacing: 0.16em;
+    margin-left: 8px;
   }
   .mobile-nav {
     display: flex;
@@ -3829,21 +3822,12 @@ body:has(.admin-login) > .site-footer {
     height: 58px;
     gap: 6px;
   }
-  .header-logo img {
+  .header-logo .header-logo-image {
     height: 52px;
   }
-  .header-wordmark {
-    width: 132px;
-    height: 40px;
-    padding-inline: 8px;
-  }
-  .header-wordmark strong {
-    font-size: 1.08rem;
-  }
-  .header-wordmark small {
-    margin-top: 5px;
-    font-size: 0.37rem;
-    letter-spacing: 0.12em;
+  .header-logo .header-wordmark-image {
+    width: 128px;
+    margin-left: 6px;
   }
   .mobile-nav {
     top: 68px;
