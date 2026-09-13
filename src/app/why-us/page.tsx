@@ -12,6 +12,22 @@ import {
 } from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
 export const metadata: Metadata = { title: "Why Us" };
+
+const promises = [
+  [
+    "Clear at every step",
+    "Straightforward choices, transparent totals and an ordering flow that respects your time.",
+  ],
+  [
+    "Care in every detail",
+    "Thoughtful preparation and presentation from the kitchen counter to your doorstep.",
+  ],
+  [
+    "Warm by nature",
+    "Familiar food and attentive service that always feel welcoming, never formal.",
+  ],
+];
+
 export default function WhyUs() {
   const cards = [
     [Leaf, "Ingredient-led", "Simple ingredients treated with attention."],
@@ -93,19 +109,43 @@ export default function WhyUs() {
           </div>
         </div>
       </section>
-      <section className="section shell promise">
-        <PackageCheck />
-        <span className="eyebrow">Our promise</span>
-        <h2>
-          Premium in detail.
-          <br />
-          <em>Warm at heart.</em>
-        </h2>
-        <p>
-          Our goal is not to make street food feel distant or formal. It is to
-          keep the joy familiar while making every touchpoint feel clearer,
-          cleaner and more considered.
-        </p>
+      <section className="section promise-section">
+        <div className="shell promise">
+          <div className="promise-copy">
+            <div className="promise-mark">
+              <PackageCheck />
+            </div>
+            <span className="eyebrow light">Our promise</span>
+            <h2>
+              Premium in detail.
+              <br />
+              <em>Warm at heart.</em>
+            </h2>
+            <p>
+              Street food should never feel distant or overly formal. We keep
+              the joy familiar while making every touchpoint clearer, cleaner
+              and more considered.
+            </p>
+            <Link href="/menu" className="button">
+              Taste the difference <ArrowRight />
+            </Link>
+          </div>
+          <div className="promise-principles">
+            <span>What you can expect</span>
+            {promises.map(([title, copy], index) => (
+              <article key={title}>
+                <i>
+                  <Check />
+                </i>
+                <div>
+                  <small>0{index + 1}</small>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
     </main>
   );
