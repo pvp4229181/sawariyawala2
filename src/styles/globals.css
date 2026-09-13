@@ -701,30 +701,116 @@ p {
 .benefit-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
+  gap: 18px;
+  position: relative;
+  padding: 68px 0 78px;
+}
+.benefit-grid::before {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(242, 140, 0, 0.5) 12%,
+    rgba(20, 126, 120, 0.45) 88%,
+    transparent
+  );
 }
 .benefit-grid article {
-  padding: 34px;
-  border-right: 1px solid var(--line);
-  background: var(--paper);
+  min-width: 0;
+  position: relative;
+  z-index: 1;
 }
-.benefit-grid article:last-child {
-  border: 0;
+.benefit-card-inner {
+  min-height: 285px;
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255, 250, 242, 0.96);
+  box-shadow: 0 22px 55px rgba(14, 31, 44, 0.1);
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
-.benefit-grid span {
+.benefit-grid article:nth-child(odd) .benefit-card-inner {
+  transform: translateY(-38px);
+}
+.benefit-grid article:nth-child(even) .benefit-card-inner {
+  transform: translateY(38px);
+}
+.benefit-grid article:nth-child(2) .benefit-card-inner {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: #fff;
+}
+.benefit-grid article:nth-child(odd):hover .benefit-card-inner {
+  transform: translateY(-48px);
+}
+.benefit-grid article:nth-child(even):hover .benefit-card-inner {
+  transform: translateY(28px);
+}
+.benefit-grid article:hover .benefit-card-inner {
+  border-color: rgba(242, 140, 0, 0.6);
+  box-shadow: 0 30px 70px rgba(14, 31, 44, 0.16);
+}
+.benefit-card-inner::after {
+  content: "";
+  position: absolute;
+  right: -42px;
+  bottom: -52px;
+  width: 130px;
+  height: 130px;
+  border: 1px solid rgba(242, 140, 0, 0.18);
+  border-radius: 50%;
+  box-shadow: 0 0 0 24px rgba(242, 140, 0, 0.035);
+}
+.benefit-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.benefit-card-head span {
   color: var(--saffron);
-  font-weight: 800;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+.benefit-card-head i {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: var(--cream-2);
+  color: var(--saffron);
+}
+.benefit-grid article:nth-child(2) .benefit-card-head i {
+  background: rgba(255, 255, 255, 0.1);
+}
+.benefit-card-head svg {
+  width: 23px;
+  height: 23px;
 }
 .benefit-grid h3 {
   font-family: var(--font-display);
-  font-size: 1.55rem;
-  margin: 35px 0 10px;
+  font-size: 1.7rem;
+  margin: 42px 0 12px;
 }
 .benefit-grid p {
+  position: relative;
+  z-index: 1;
   font-size: 0.9rem;
   color: var(--muted);
+}
+.benefit-grid article:nth-child(2) p {
+  color: #c5d2da;
 }
 .quality-banner {
   height: 520px;
@@ -2656,7 +2742,6 @@ body:has(.admin-login) > .site-footer {
 .quality-banner:hover img {
   transform: scale(1.045);
 }
-.benefit-grid article,
 .philosophy-grid article,
 .icon-card-grid article,
 .testimonial-grid blockquote {
@@ -2665,7 +2750,6 @@ body:has(.admin-login) > .site-footer {
     box-shadow 0.28s ease,
     border-color 0.28s ease;
 }
-.benefit-grid article:hover,
 .philosophy-grid article:hover,
 .icon-card-grid article:hover,
 .testimonial-grid blockquote:hover {
@@ -2765,9 +2849,13 @@ body:has(.admin-login) > .site-footer {
   }
   .benefit-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .benefit-grid::before {
+    display: none;
   }
   .benefit-grid article {
-    border-bottom: 1px solid var(--line);
+    border-bottom: 0;
   }
   .story-grid,
   .editorial-split {
@@ -3194,6 +3282,25 @@ body:has(.admin-login) > .site-footer {
   .philosophy-grid,
   .icon-card-grid {
     grid-template-columns: 1fr;
+  }
+  .benefit-grid {
+    gap: 16px;
+    padding: 32px 0;
+  }
+  .benefit-grid article:nth-child(odd) {
+    margin-right: 22px;
+  }
+  .benefit-grid article:nth-child(even) {
+    margin-left: 22px;
+  }
+  .benefit-grid article:nth-child(odd) .benefit-card-inner,
+  .benefit-grid article:nth-child(even) .benefit-card-inner,
+  .benefit-grid article:nth-child(odd):hover .benefit-card-inner,
+  .benefit-grid article:nth-child(even):hover .benefit-card-inner {
+    transform: translateY(0);
+  }
+  .benefit-card-inner {
+    min-height: 245px;
   }
   .quality-banner {
     height: 470px;

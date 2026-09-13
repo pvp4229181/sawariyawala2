@@ -8,6 +8,7 @@ import {
   Heart,
   Leaf,
   ShieldCheck,
+  ShoppingBag,
   Sparkles,
   Truck,
 } from "lucide-react";
@@ -57,6 +58,29 @@ const reviews = [
     name: "Riya P.",
     quote:
       "From ordering to delivery, every detail felt simple, fresh and well cared for.",
+  },
+];
+
+const guestBenefits = [
+  {
+    icon: ChefHat,
+    title: "Food-first menus",
+    copy: "A focused selection built for flavour, clarity and quick decisions.",
+  },
+  {
+    icon: Heart,
+    title: "Warm hospitality",
+    copy: "Friendly service and thoughtful details from counter to doorstep.",
+  },
+  {
+    icon: ShoppingBag,
+    title: "Easy ordering",
+    copy: "A simple path from menu to payment, with COD and Razorpay.",
+  },
+  {
+    icon: Award,
+    title: "Catering that scales",
+    copy: "A flexible food experience for intimate gatherings and large events.",
   },
 ];
 
@@ -195,25 +219,18 @@ export default function Home() {
           </p>
         </div>
         <div className="benefit-grid">
-          {[
-            "Food-first menus",
-            "Warm hospitality",
-            "Easy ordering",
-            "Catering that scales",
-          ].map((title, i) => (
+          {guestBenefits.map(({ icon: Icon, title, copy }, index) => (
             <article key={title}>
-              <span>0{i + 1}</span>
-              <h3>{title}</h3>
-              <p>
-                {
-                  [
-                    "A focused selection built for flavour, clarity and quick decisions.",
-                    "Friendly service and thoughtful details from counter to doorstep.",
-                    "A simple path from menu to payment, with COD and Razorpay.",
-                    "A flexible food experience for intimate gatherings and large events.",
-                  ][i]
-                }
-              </p>
+              <div className="benefit-card-inner">
+                <div className="benefit-card-head">
+                  <span>0{index + 1}</span>
+                  <i>
+                    <Icon />
+                  </i>
+                </div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
             </article>
           ))}
         </div>
