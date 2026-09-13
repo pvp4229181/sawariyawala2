@@ -2969,6 +2969,17 @@ p {
   color: #6f665c;
 }
 
+.nexmogen-credit {
+  color: #1a2a4a;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nexmogen-credit:hover,
+.nexmogen-credit:focus-visible {
+  text-decoration: underline;
+}
+
 /* Admin */
 .admin-login {
   min-height: 100vh;

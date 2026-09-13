@@ -54,6 +54,17 @@ export function Footer() {
       <div className="shell footer-bottom">
         <span>(c) {new Date().getFullYear()} Sawariyawala Food & Caterers</span>
         <span>Tradition / Taste / Togetherness</span>
+        <span>
+          Created by{" "}
+          <a
+            href="https://nexmogen.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nexmogen-credit"
+          >
+            Nexmogen
+          </a>
+        </span>
       </div>
     </footer>
   );
