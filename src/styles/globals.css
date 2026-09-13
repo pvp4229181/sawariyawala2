@@ -3668,10 +3668,26 @@ body:has(.admin-login) > .site-footer {
     height: 460px;
   }
   .testimonial-grid {
-    margin-inline: -15px;
+    overflow: visible;
+    mask-image: none;
+    padding: 4px 0 8px;
+  }
+  .testimonial-track {
+    width: auto;
+    animation: none;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .testimonial-set {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .testimonial-set[aria-hidden="true"] {
+    display: none;
   }
   .testimonial-grid blockquote {
-    width: min(82vw, 330px);
+    width: 100%;
+    min-height: 0;
     padding: 28px;
   }
   .food-strip {
@@ -3705,11 +3721,7 @@ body:has(.admin-login) > .site-footer {
     top: 76px;
   }
   .filter-row {
-    overflow: auto;
-    padding-bottom: 2px;
-  }
-  .filter-row button {
-    white-space: nowrap;
+    flex-wrap: wrap;
   }
   .search-box {
     width: 100%;
