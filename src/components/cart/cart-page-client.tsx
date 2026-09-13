@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { CHECKOUT_ENABLED, COMMERCE_PAUSED_MESSAGE } from "@/config/features";
 import { siteConfig } from "@/config/site";
 import { formatMoney } from "@/lib/money";
 import { useCart } from "@/store/cart-store";
@@ -83,9 +84,19 @@ export function CartPageClient() {
             ? `Free delivery above ${formatMoney(siteConfig.freeDeliveryThreshold)}.`
             : "Your order qualifies for free delivery."}
         </p>
-        <Link className="button full" href="/checkout">
-          Proceed to Checkout <ArrowRight />
-        </Link>
+        {CHECKOUT_ENABLED ? (
+          <Link className="button full" href="/checkout">
+            Proceed to Checkout <ArrowRight />
+          </Link>
+        ) : (
+          <span
+            className="button full commerce-paused"
+            aria-disabled="true"
+            title={COMMERCE_PAUSED_MESSAGE}
+          >
+            Checkout coming soon
+          </span>
+        )}
       </aside>
     </div>
   );

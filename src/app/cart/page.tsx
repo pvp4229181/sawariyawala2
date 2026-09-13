@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CartPageClient } from "@/components/cart/cart-page-client";
-import { COMMERCE_ENABLED } from "@/config/features";
+import { CART_ENABLED } from "@/config/features";
 export const metadata: Metadata = { title: "Your Cart" };
 export default function CartPage() {
-  if (!COMMERCE_ENABLED) notFound();
+  if (!CART_ENABLED) notFound();
 
   return (
     <main className="simple-page shell">

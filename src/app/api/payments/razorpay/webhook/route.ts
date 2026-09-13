@@ -1,10 +1,10 @@
 import { connectDB } from "@/lib/db";
-import { COMMERCE_ENABLED } from "@/config/features";
+import { CHECKOUT_ENABLED } from "@/config/features";
 import { verifyWebhookSignature } from "@/lib/razorpay";
 import { Order } from "@/models/Order";
 
 export async function POST(request: Request) {
-  if (!COMMERCE_ENABLED)
+  if (!CHECKOUT_ENABLED)
     return Response.json({ ok: true, commerceDisabled: true });
 
   const raw = await request.text(),

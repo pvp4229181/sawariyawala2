@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { CHECKOUT_ENABLED, COMMERCE_PAUSED_MESSAGE } from "@/config/features";
 import { formatMoney } from "@/lib/money";
 import { useCart } from "@/store/cart-store";
 import { siteConfig } from "@/config/site";
@@ -103,13 +104,23 @@ export function CartDrawer() {
                   ? `Add ${formatMoney(siteConfig.freeDeliveryThreshold - subtotal)} more for free delivery.`
                   : "You unlocked free delivery."}
               </p>
-              <Link
-                href="/checkout"
-                onClick={closeDrawer}
-                className="button full"
-              >
-                Proceed to Checkout
-              </Link>
+              {CHECKOUT_ENABLED ? (
+                <Link
+                  href="/checkout"
+                  onClick={closeDrawer}
+                  className="button full"
+                >
+                  Proceed to Checkout
+                </Link>
+              ) : (
+                <span
+                  className="button full commerce-paused"
+                  aria-disabled="true"
+                  title={COMMERCE_PAUSED_MESSAGE}
+                >
+                  Checkout coming soon
+                </span>
+              )}
               <Link
                 href="/cart"
                 onClick={closeDrawer}

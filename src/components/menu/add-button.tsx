@@ -1,7 +1,7 @@
 "use client";
 import { Minus, Plus } from "lucide-react";
 import { toast } from "sonner";
-import { COMMERCE_ENABLED } from "@/config/features";
+import { CART_ENABLED } from "@/config/features";
 import type { ProductDTO } from "@/types";
 import { useCart } from "@/store/cart-store";
 
@@ -12,7 +12,7 @@ export function AddButton({
   product: ProductDTO;
   label?: string;
 }) {
-  if (!COMMERCE_ENABLED) {
+  if (!CART_ENABLED) {
     return (
       <span
         className="commerce-paused"

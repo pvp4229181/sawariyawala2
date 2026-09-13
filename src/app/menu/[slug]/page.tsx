@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, Check, Leaf } from "lucide-react";
 import { notFound } from "next/navigation";
 import { AddButton } from "@/components/menu/add-button";
-import { COMMERCE_ENABLED } from "@/config/features";
+import { CART_ENABLED } from "@/config/features";
 import { ProductCard } from "@/components/menu/product-card";
 import { ReviewForm } from "@/components/reviews/review-form";
 import { seedProducts } from "@/data/seed-products";
@@ -93,12 +93,12 @@ export default async function ProductPage({
               <AddButton product={p} label="Add to Cart" />
               <span>
                 <b>
-                  {COMMERCE_ENABLED
+                  {CART_ENABLED
                     ? "Ready when you are"
                     : "Online ordering paused"}
                 </b>
                 <small>
-                  {COMMERCE_ENABLED
+                  {CART_ENABLED
                     ? "Added directly to your basket"
                     : "Returning in a future update"}
                 </small>
