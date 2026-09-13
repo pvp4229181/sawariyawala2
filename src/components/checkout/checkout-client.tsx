@@ -283,7 +283,7 @@ export function CheckoutClient() {
           <div className="summary-lines">
             {items.map((line) => (
               <div key={line.slug}>
-                <Image src={line.image} alt="" width={62} height={50} />
+                <Image src={line.image} alt="" width={62} height={62} />
                 <span>
                   <b>{line.name}</b>
                   <small>

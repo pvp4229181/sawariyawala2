@@ -37,7 +37,7 @@ export function CartPageClient() {
         </div>
         {items.map((line) => (
           <article key={line.slug}>
-            <Image src={line.image} alt={line.name} width={132} height={105} />
+            <Image src={line.image} alt={line.name} width={132} height={132} />
             <div className="cart-name">
               <Link href={`/menu/${line.slug}`}>{line.name}</Link>
               <small>{formatMoney(line.price)} each</small>

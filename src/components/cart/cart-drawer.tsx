@@ -54,7 +54,7 @@ export function CartDrawer() {
                     src={line.image}
                     alt={line.name}
                     width={88}
-                    height={70}
+                    height={88}
                   />
                   <div>
                     <h3>{line.name}</h3>

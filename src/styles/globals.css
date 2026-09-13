@@ -445,9 +445,11 @@ p {
 }
 .product-image {
   display: block;
-  height: 210px;
+  width: 100%;
+  aspect-ratio: 1;
   position: relative;
   overflow: hidden;
+  border-radius: 18px;
   background: var(--cream-2);
 }
 .product-image img {
@@ -560,7 +562,9 @@ p {
 }
 .quick-image {
   position: relative;
-  min-height: 520px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 22px;
 }
 .quick-image img {
   object-fit: cover;
@@ -660,9 +664,10 @@ p {
   z-index: 1;
 }
 .story-image {
-  height: 590px;
+  width: 100%;
+  aspect-ratio: 1;
   position: relative;
-  border-radius: 180px 180px 18px 18px;
+  border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid rgba(242, 140, 0, 0.55);
 }
@@ -852,15 +857,16 @@ p {
   color: var(--muted);
 }
 .framed-image {
-  height: 610px;
+  width: 100%;
+  aspect-ratio: 1;
   position: relative;
-  border-radius: 180px 180px 18px 18px;
+  border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
 }
 .framed-image.short {
-  height: 330px;
-  border-radius: 18px;
+  aspect-ratio: 1;
+  border-radius: var(--radius);
   margin-top: 30px;
 }
 .framed-image img {
@@ -1088,7 +1094,8 @@ p {
   align-items: center;
 }
 .detail-image {
-  height: 600px;
+  width: 100%;
+  aspect-ratio: 1;
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
@@ -1349,8 +1356,11 @@ p {
   border-bottom: 1px solid var(--line);
 }
 .cart-line img {
+  width: 88px;
+  height: 88px;
+  aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 .cart-line h3 {
   font-family: var(--font-display);
@@ -1454,8 +1464,11 @@ p {
   border-bottom: 1px solid var(--line);
 }
 .cart-page-lines article > img {
+  width: 132px;
+  height: 132px;
+  aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 .cart-name {
   display: flex;
@@ -1669,8 +1682,11 @@ p {
   align-items: center;
 }
 .summary-lines img {
+  width: 62px;
+  height: 62px;
+  aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 .summary-lines span {
   display: flex;
@@ -2322,7 +2338,7 @@ body:has(.admin-login) > .site-footer {
   }
   .cart-page-lines article > img {
     width: 105px;
-    height: 84px;
+    height: 105px;
   }
   .admin-layout {
     grid-template-columns: 200px;
@@ -2448,10 +2464,6 @@ body:has(.admin-login) > .site-footer {
   .track-wrap {
     grid-template-columns: 1fr;
   }
-  .story-image,
-  .framed-image {
-    height: 500px;
-  }
   .story-copy {
     padding-bottom: 20px;
   }
@@ -2471,9 +2483,6 @@ body:has(.admin-login) > .site-footer {
   .product-detail-grid {
     grid-template-columns: 1fr;
     gap: 40px;
-  }
-  .detail-image {
-    height: 520px;
   }
   .related {
     grid-template-columns: repeat(3, 1fr);
@@ -2631,9 +2640,6 @@ body:has(.admin-login) > .site-footer {
   .product-grid {
     gap: 11px;
   }
-  .product-image {
-    height: 150px;
-  }
   .product-card > div:last-child {
     padding: 13px;
   }
@@ -2661,9 +2667,6 @@ body:has(.admin-login) > .site-footer {
   .quick-modal {
     grid-template-columns: 1fr;
   }
-  .quick-image {
-    min-height: 280px;
-  }
   .quick-copy {
     padding: 32px 22px;
   }
@@ -2678,9 +2681,6 @@ body:has(.admin-login) > .site-footer {
   }
   .story-grid {
     gap: 35px;
-  }
-  .story-image {
-    height: 410px;
   }
   .benefit-grid,
   .philosophy-grid,
@@ -2709,9 +2709,6 @@ body:has(.admin-login) > .site-footer {
   .editorial-split {
     gap: 35px;
   }
-  .framed-image {
-    height: 400px;
-  }
   .timeline-row {
     grid-template-columns: 50px 1fr;
   }
@@ -2729,9 +2726,6 @@ body:has(.admin-login) > .site-footer {
   }
   .product-detail-grid {
     gap: 25px;
-  }
-  .detail-image {
-    height: 390px;
   }
   .detail-copy h1 {
     font-size: 4rem;
@@ -2757,7 +2751,7 @@ body:has(.admin-login) > .site-footer {
   }
   .cart-line img {
     width: 72px;
-    height: 62px;
+    height: 72px;
   }
   .drawer-head {
     padding: 22px;
@@ -2774,7 +2768,7 @@ body:has(.admin-login) > .site-footer {
   }
   .cart-page-lines article > img {
     width: 82px;
-    height: 72px;
+    height: 82px;
   }
   .checkout-page {
     padding-top: 40px;
