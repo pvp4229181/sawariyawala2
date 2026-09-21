@@ -3,6 +3,7 @@ export const siteConfig = {
   shortName: "Sawariyawala",
   description:
     "Authentic Indian street-food favourites and warm catering experiences, brought together with thoughtful hospitality.",
+  tagline: "Tradition, Taste & Togetherness",
   phone: "+91 98765 43210",
   email: "hello@sawariyawala.com",
   address: "Your configured Sawariyawala location",

@@ -1,12 +1,14 @@
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Camera, Clock3, Mail, MapPin, Phone, Share2 } from "lucide-react";
+import { Clock3, Mail, MapPin, Phone } from "lucide-react";
+import { GoogleReviewStrip } from "@/components/layout/google-review-strip";
+import { FacebookIcon, InstagramIcon } from "@/components/ui/social-icons";
 import { siteConfig } from "@/config/site";
 
 export function Footer() {
   return (
     <footer className="site-footer">
-      <div className="footer-flourish" />
       <div className="shell footer-grid">
         <div className="footer-brand">
           <Image
@@ -21,10 +23,10 @@ export function Footer() {
           </p>
           <div className="socials">
             <a href={siteConfig.instagram} aria-label="Instagram">
-              <Camera />
+              <InstagramIcon />
             </a>
             <a href={siteConfig.facebook} aria-label="Facebook">
-              <Share2 />
+              <FacebookIcon />
             </a>
           </div>
         </div>
@@ -51,9 +53,12 @@ export function Footer() {
           </p>
         </div>
       </div>
+      <Suspense fallback={null}>
+        <GoogleReviewStrip />
+      </Suspense>
       <div className="shell footer-bottom">
         <span>(c) {new Date().getFullYear()} Sawariyawala Food & Caterers</span>
-        <span>Tradition / Taste / Togetherness</span>
+        <span>{siteConfig.tagline}</span>
         <span>
           Created by{" "}
           <a

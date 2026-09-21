@@ -307,7 +307,8 @@ p {
 
 /* Home */
 .home-hero {
-  height: clamp(650px, 80vh, 860px);
+  min-height: clamp(650px, 80vh, 860px);
+  padding-bottom: 46px;
   position: relative;
   background: var(--navy-deep);
   isolation: isolate;
@@ -932,6 +933,54 @@ p {
 .testimonials .section-heading h2 em {
   color: var(--saffron);
 }
+.testimonial-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 16px;
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+}
+.testimonial-source > svg {
+  width: 19px;
+  flex: none;
+}
+.testimonial-source > span {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.3;
+}
+.testimonial-source b {
+  font-size: 0.82rem;
+  color: #fff;
+}
+.testimonial-source small {
+  font-size: 0.7rem;
+  color: #91a4b1;
+}
+.testimonial-source > a {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--saffron);
+  text-decoration: none;
+  padding-left: 11px;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+}
+.testimonial-source > a:hover,
+.testimonial-source > a:focus-visible {
+  text-decoration: underline;
+}
+.testimonial-grid cite a {
+  color: inherit;
+  text-decoration: none;
+}
+.testimonial-grid cite a:hover,
+.testimonial-grid cite a:focus-visible {
+  text-decoration: underline;
+}
 .testimonial-grid {
   overflow: hidden;
   padding: 16px 0 28px;
@@ -1327,6 +1376,60 @@ p {
 .icon-card-grid p {
   color: var(--muted);
   font-size: 0.9rem;
+}
+/* Brand pillars: Tradition / Taste / Togetherness */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.pillar-grid article {
+  position: relative;
+  overflow: hidden;
+  padding: 38px 32px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--paper);
+  box-shadow: 0 18px 45px rgba(14, 31, 44, 0.07);
+}
+.pillar-grid article::after {
+  content: "";
+  position: absolute;
+  inset: auto -30px -40px auto;
+  width: 150px;
+  height: 150px;
+  border: 1px solid rgba(242, 140, 0, 0.16);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.pillar-grid i {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: var(--cream-2);
+  color: var(--saffron);
+}
+.pillar-grid svg {
+  width: 24px;
+  height: 24px;
+}
+.pillar-grid h3 {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  color: var(--navy);
+  margin: 22px 0 10px;
+}
+.pillar-grid p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 .cream-section {
   background: var(--cream-2);
@@ -2895,13 +2998,6 @@ p {
   padding-top: 48px;
   position: relative;
 }
-.footer-flourish {
-  position: absolute;
-  inset: auto 0 0;
-  height: 220px;
-  background: url("/assets/brand/city-line-art.svg") bottom/cover no-repeat;
-  opacity: 1;
-}
 .footer-grid {
   display: grid;
   grid-template-columns: 1.4fr 0.6fr 1fr;
@@ -2944,7 +3040,8 @@ p {
 }
 .socials {
   display: flex;
-  gap: 8px;
+  gap: 10px;
+  margin-top: 18px;
 }
 .socials a {
   width: 34px;
@@ -2956,6 +3053,152 @@ p {
 }
 .socials svg {
   width: 16px;
+}
+.google-reviews {
+  position: relative;
+  z-index: 1;
+  margin-top: 34px;
+  padding-top: 26px;
+  border-top: 1px solid #d8c7ae;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 26px;
+}
+.google-reviews-summary {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.google-reviews-summary > svg {
+  width: 26px;
+  flex: none;
+}
+.google-reviews-summary > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.google-reviews-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.google-reviews-score {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.google-reviews-score b {
+  font: 600 1.3rem var(--font-display);
+  color: var(--navy);
+  line-height: 1;
+}
+.google-reviews-summary small {
+  font-size: 0.72rem;
+  color: #6f665c;
+}
+.google-stars {
+  display: inline-flex;
+  gap: 1px;
+}
+.google-stars svg {
+  width: 13px;
+  color: #d8c7ae;
+  fill: none;
+}
+.google-stars svg.filled {
+  color: var(--saffron);
+  fill: currentColor;
+}
+.google-reviews-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.google-reviews-list li {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 13px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+.google-reviews-list p {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.google-reviews-list footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+}
+.google-reviews-list footer > span {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--cream-2);
+  color: var(--navy);
+  display: grid;
+  place-items: center;
+  font-size: 0.62rem;
+  font-weight: 600;
+  flex: none;
+}
+.google-reviews-list cite {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--navy);
+  min-width: 0;
+}
+.google-reviews-list cite a {
+  color: inherit;
+  text-decoration: none;
+}
+.google-reviews-list cite a:hover,
+.google-reviews-list cite a:focus-visible {
+  text-decoration: underline;
+}
+.google-reviews-list cite small {
+  font-weight: 400;
+  font-size: 0.68rem;
+  color: #6f665c;
+}
+.google-reviews-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+}
+.google-reviews-link svg {
+  width: 15px;
+  color: var(--saffron);
+}
+.google-reviews-link:hover,
+.google-reviews-link:focus-visible {
+  text-decoration: underline;
 }
 .footer-bottom {
   border-top: 1px solid #d8c7ae;
@@ -3540,6 +3783,32 @@ body:has(.admin-login) > .site-footer {
   }
 }
 @media (max-width: 800px) {
+  .pillar-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .pillar-grid article {
+    padding: 30px 26px;
+  }
+  /* Two columns plus a 50px gap cannot fit a phone; this overflowed and was
+     clipped by html{overflow-x:hidden}, hiding the submit button. */
+  .review-submit-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    align-items: start;
+  }
+  .review-submit-intro h2 {
+    margin: 14px 0 16px;
+  }
+  .google-reviews {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .google-reviews-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .google-reviews-list li:nth-child(3) {
+    display: none;
+  }
   :root {
     --shell: calc(100% - 30px);
   }
@@ -3619,7 +3888,7 @@ body:has(.admin-login) > .site-footer {
     margin-top: 20px;
   }
   .home-hero {
-    height: 720px;
+    min-height: 720px;
   }
   .home-hero > img {
     object-position: 66% center;
@@ -3699,7 +3968,17 @@ body:has(.admin-login) > .site-footer {
   .testimonial-grid blockquote {
     width: 100%;
     min-height: 0;
-    padding: 28px;
+    padding: 24px 22px;
+  }
+  .testimonial-grid blockquote p {
+    font-size: 1.12rem;
+    margin: 16px 0 20px;
+  }
+  .testimonial-track {
+    gap: 12px;
+  }
+  .testimonial-set {
+    gap: 12px;
   }
   .food-strip {
     height: 300px;
@@ -3799,11 +4078,66 @@ body:has(.admin-login) > .site-footer {
   }
 }
 @media (max-width: 560px) {
+  .pillar-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .pillar-grid article {
+    padding: 24px 22px;
+  }
+  .pillar-grid h3 {
+    font-size: 1.6rem;
+    margin: 16px 0 8px;
+  }
+  /* Five 44px stars leave no room for the label beside them. */
+  .star-rating > div {
+    flex-wrap: wrap;
+  }
+  .star-rating > div > span {
+    flex-basis: 100%;
+    margin-left: 0;
+    margin-top: 4px;
+  }
+  /* Comfortable touch targets, sized on the containers. Forcing a min-width
+     onto the stepper's own buttons overrode its grid tracks and burst the
+     card, so those are sized via .item-stepper below instead. */
+  .icon-button,
+  .mobile-toggle,
+  .add-button,
+  .star-rating button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .button {
+    min-height: 46px;
+  }
+  .quantity button {
+    width: 38px;
+    height: 38px;
+  }
+  .google-reviews {
+    margin-top: 26px;
+    padding-top: 20px;
+    gap: 14px;
+  }
+  .google-reviews-list {
+    grid-template-columns: 1fr;
+  }
+  .google-reviews-list li:nth-child(2),
+  .google-reviews-list li:nth-child(3) {
+    display: none;
+  }
   :root {
     --shell: calc(100% - 24px);
   }
   .section {
-    padding-block: 62px;
+    padding-block: 46px;
+  }
+  .story-teaser {
+    padding-block: 52px;
+  }
+  .story-teaser::after {
+    height: 120px;
   }
   .promise-section {
     padding-block: 78px;
@@ -3856,41 +4190,76 @@ body:has(.admin-login) > .site-footer {
     top: 68px;
   }
   .home-hero {
-    height: 700px;
+    min-height: min(86vh, 620px);
+    padding-bottom: 34px;
   }
   .home-hero > img {
     object-position: 63% center;
   }
   .hero-copy {
-    padding-top: 75px;
+    padding-top: 54px;
   }
   .hero-copy h1 {
-    font-size: 3.8rem;
+    font-size: 3.1rem;
+    line-height: 1.04;
   }
   .hero-copy h1 em {
     display: inline-block;
   }
   .hero-copy p {
-    font-size: 0.94rem;
-    max-width: 90%;
+    font-size: 0.92rem;
+    max-width: 100%;
+    margin-bottom: 26px;
   }
+  /* Stacked buttons of differing widths read as a mistake; match them. */
   .hero-actions {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 10px;
   }
+  .hero-actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+  /* Three even columns instead of 2 + 1 orphan. */
   .hero-mini {
-    gap: 13px;
-    margin-top: 45px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 28px;
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
   }
   .hero-mini span {
-    width: 45%;
+    width: auto;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .hero-mini svg {
+    width: 15px;
   }
   .trust-strip {
     margin-top: -26px;
-    padding: 12px;
+    padding: 6px;
+    border-radius: 16px;
   }
+  /* Icon above label keeps all four cells the same shape whatever the
+     label length, instead of some wrapping to two lines and some not. */
   .trust-strip > div {
-    padding: 12px 8px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 7px;
+    padding: 16px 6px;
+  }
+  .trust-strip svg {
+    width: 22px;
+  }
+  .trust-strip b {
+    font-size: 0.9rem;
+    line-height: 1.25;
   }
   .trust-strip small {
     display: none;
@@ -3900,6 +4269,31 @@ body:has(.admin-login) > .site-footer {
   }
   .product-card > div:last-child {
     padding: 13px;
+  }
+  /* Price and control side by side left ~110px for a three-button stepper.
+     Giving the control its own full-width row fits it comfortably and reads
+     as a deliberate part of the card. */
+  .product-bottom {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 13px;
+  }
+  .product-bottom > b {
+    font-size: 1.02rem;
+  }
+  .add-button {
+    justify-content: center;
+    padding: 11px 13px;
+  }
+  .item-stepper {
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    grid-template-columns: 1fr 44px 1fr;
+  }
+  .item-stepper > span {
+    font-size: 0.95rem;
   }
   .product-card h3 {
     font-size: 1.2rem;
@@ -3949,11 +4343,11 @@ body:has(.admin-login) > .site-footer {
     gap: 16px;
     padding: 32px 0;
   }
-  .benefit-grid article:nth-child(odd) {
-    margin-right: 22px;
-  }
+  /* The staggered left/right insets read as broken alignment on a narrow
+     screen, so cards sit flush with every other section instead. */
+  .benefit-grid article:nth-child(odd),
   .benefit-grid article:nth-child(even) {
-    margin-left: 22px;
+    margin-inline: 0;
   }
   .benefit-grid article:nth-child(odd) .benefit-card-inner,
   .benefit-grid article:nth-child(even) .benefit-card-inner,
@@ -3962,17 +4356,24 @@ body:has(.admin-login) > .site-footer {
     transform: translateY(0);
   }
   .benefit-card-inner {
-    min-height: 245px;
+    min-height: 0;
+    padding: 22px;
+  }
+  /* The 42px top margin on h3 was spacing out a 285px-tall desktop card;
+     with the card sized to content it just left a hole. */
+  .benefit-grid h3 {
+    font-size: 1.45rem;
+    margin: 18px 0 10px;
   }
   .quality-banner {
-    height: 470px;
-    margin-bottom: 65px;
+    height: 380px;
+    margin-bottom: 42px;
   }
   .quality-banner > div:last-child {
-    padding: 45px 25px;
+    padding: 32px 22px;
   }
   .food-strip {
-    height: 270px;
+    height: 210px;
   }
   .page-hero {
     height: 400px;

@@ -13,6 +13,8 @@ import {
   Truck,
 } from "lucide-react";
 import { ProductCard } from "@/components/menu/product-card";
+import { Testimonials } from "@/components/home/testimonials";
+import { siteConfig } from "@/config/site";
 import { seedProducts } from "@/data/seed-products";
 
 const benefits = [
@@ -35,31 +37,6 @@ const benefits = [
     icon: Truck,
     title: "Fast Delivery",
     copy: "Packed with care and sent without fuss.",
-  },
-];
-
-const reviews = [
-  {
-    name: "Aarav M.",
-    initials: "AM",
-    quote: "The menu was easy to browse and everything arrived neatly packed.",
-  },
-  {
-    name: "Meera S.",
-    initials: "MS",
-    quote:
-      "A polished experience with the comfort of familiar Indian flavours.",
-  },
-  {
-    name: "Kabir R.",
-    initials: "KR",
-    quote: "The catering presentation felt warm, thoughtful and effortless.",
-  },
-  {
-    name: "Riya P.",
-    initials: "RP",
-    quote:
-      "From the first enquiry to the final serving, every detail felt simple, fresh and well cared for.",
   },
 ];
 
@@ -246,7 +223,7 @@ export default function Home() {
         />
         <div className="quality-overlay" />
         <div>
-          <span className="eyebrow light">Taste. Tradition. Togetherness.</span>
+          <span className="eyebrow light">{siteConfig.tagline}</span>
           <h2>
             Good food.
             <br />
@@ -268,46 +245,7 @@ export default function Home() {
           sizes="100vw"
         />
       </section>
-      <section className="section testimonials">
-        <div className="shell">
-          <div className="section-heading center">
-            <span className="eyebrow">Happy customers</span>
-            <h2>
-              Kind words, <em>warm moments</em>
-            </h2>
-          </div>
-          <div className="testimonial-grid" aria-label="Customer reviews">
-            <div className="testimonial-track">
-              {[0, 1].map((loop) => (
-                <div
-                  className="testimonial-set"
-                  aria-hidden={loop === 1 ? true : undefined}
-                  key={loop}
-                >
-                  {reviews.map(({ name, initials, quote }, index) => (
-                    <blockquote key={`${loop}-${name}`}>
-                      <div className="testimonial-card-top">
-                        <span aria-label="5 out of 5 stars">★★★★★</span>
-                        <small aria-hidden="true">
-                          {String(index + 1).padStart(2, "0")}
-                        </small>
-                      </div>
-                      <p>“{quote}”</p>
-                      <footer>
-                        <span aria-hidden="true">{initials}</span>
-                        <cite>
-                          {name}
-                          <small>Demo testimonial — editable</small>
-                        </cite>
-                      </footer>
-                    </blockquote>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <Testimonials />
     </main>
   );
 }

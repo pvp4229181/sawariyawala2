@@ -17,12 +17,12 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   ),
   title: {
-    default: "Sawariyawala Food & Caterers",
+    default: `${siteConfig.name} - ${siteConfig.tagline}`,
     template: "%s | Sawariyawala",
   },
   description: siteConfig.description,
   openGraph: {
-    title: siteConfig.name,
+    title: `${siteConfig.name} - ${siteConfig.tagline}`,
     description: siteConfig.description,
     images: ["/assets/editorial/home-hero.webp"],
   },

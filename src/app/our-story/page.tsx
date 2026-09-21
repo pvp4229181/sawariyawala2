@@ -37,6 +37,24 @@ const journey = [
   },
 ];
 
+const pillars = [
+  {
+    word: "Tradition",
+    copy: "Recipes and techniques carried forward with respect for where they came from.",
+    icon: Feather,
+  },
+  {
+    word: "Taste",
+    copy: "Flavour leads every decision, from the spice blend to the final plate.",
+    icon: Utensils,
+  },
+  {
+    word: "Togetherness",
+    copy: "Food made for sharing, and for the people gathered around it.",
+    icon: Heart,
+  },
+];
+
 export default function Story() {
   return (
     <main>
@@ -149,6 +167,29 @@ export default function Story() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+      <section className="section shell">
+        <div className="section-heading center">
+          <span className="eyebrow">What we stand for</span>
+          <h2>
+            Tradition, Taste and <em>Togetherness</em>
+          </h2>
+          <p>
+            Three words that decide what goes on the menu, how it is served and
+            who it is for.
+          </p>
+        </div>
+        <div className="pillar-grid">
+          {pillars.map(({ word, copy, icon: Icon }) => (
+            <article key={word}>
+              <i>
+                <Icon />
+              </i>
+              <h3>{word}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
         </div>
       </section>
       <section className="cta-band">

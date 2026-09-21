@@ -21,6 +21,7 @@ const revealSelectors = [
   ".timeline-intro > *",
   ".timeline-card",
   ".icon-card-grid article",
+  ".pillar-grid article",
   ".promise > *",
   ".contact-grid > *",
   ".paper-form",
