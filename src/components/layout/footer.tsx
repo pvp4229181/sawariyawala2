@@ -31,8 +31,10 @@ export function Footer() {
         <div>
           <h3>Explore</h3>
           <Link href="/menu">Our Menu</Link>
+          <Link href="/catering">Catering Services</Link>
           <Link href="/our-story">Our Story</Link>
           <Link href="/why-us">Why Us</Link>
+          <Link href="/cart">Your Cart</Link>
           <Link href="/track-order">Track Order</Link>
         </div>
         <div>

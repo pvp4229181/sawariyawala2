@@ -2,20 +2,32 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Search, X } from "lucide-react";
+import { Menu, Search, ShoppingBag, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { CART_ENABLED } from "@/config/features";
+import { useCart } from "@/store/cart-store";
 
 const links = [
   ["/", "Home"],
   ["/our-story", "Our Story"],
   ["/menu", "Menu"],
+  ["/catering", "Catering"],
   ["/why-us", "Why Us"],
   ["/contact", "Contact"],
 ];
 export function Header() {
   const pathname = usePathname(),
-    [mobile, setMobile] = useState(false);
+    [mobile, setMobile] = useState(false),
+    [mounted, setMounted] = useState(false),
+    openDrawer = useCart((state) => state.openDrawer),
+    itemCount = useCart((state) =>
+      state.items.reduce((total, line) => total + line.quantity, 0),
+    );
   useEffect(() => setMobile(false), [pathname]);
+  // The cart is restored from localStorage, so the count only renders once the
+  // client has mounted and the server and client markup agree.
+  useEffect(() => setMounted(true), []);
+  const count = mounted ? itemCount : 0;
   return (
     <header className="site-header">
       <div className="header-inner shell">
@@ -59,6 +71,19 @@ export function Header() {
           <Link href="/menu" className="button button-small">
             View Menu
           </Link>
+          {CART_ENABLED && (
+            <button
+              type="button"
+              className="icon-button cart-trigger"
+              onClick={openDrawer}
+              aria-label={
+                count ? `Open cart, ${count} items` : "Open cart, empty"
+              }
+            >
+              <ShoppingBag size={19} />
+              {count > 0 && <span aria-hidden="true">{count}</span>}
+            </button>
+          )}
           <button
             className="icon-button mobile-toggle"
             onClick={() => setMobile(!mobile)}
@@ -74,6 +99,9 @@ export function Header() {
             {label}
           </Link>
         ))}
+        {CART_ENABLED && (
+          <Link href="/cart">Cart{count > 0 && ` (${count})`}</Link>
+        )}
         <Link className="button" href="/menu">
           Explore Menu
         </Link>

@@ -21,6 +21,10 @@ const revealSelectors = [
   ".timeline-intro > *",
   ".timeline-card",
   ".icon-card-grid article",
+  ".service-card",
+  ".scale-grid article",
+  ".catering-steps article",
+  ".occasion-cloud > *",
   ".promise > *",
   ".contact-grid > *",
   ".paper-form",
@@ -54,7 +58,7 @@ export function SiteMotion() {
       )
         ? "image"
         : element.matches(
-              ".product-card, .review-form-card, .timeline-card, .icon-card-grid article",
+              ".product-card, .review-form-card, .timeline-card, .icon-card-grid article, .service-card, .scale-grid article, .catering-steps article",
             )
           ? "card"
           : "up";
