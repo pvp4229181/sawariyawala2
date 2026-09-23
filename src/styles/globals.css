@@ -2984,6 +2984,13 @@ p {
 .footer-bottom a:hover {
   color: var(--saffron);
 }
+.nexmogen-link {
+  color: var(--saffron);
+  font-weight: 600;
+}
+.nexmogen-link:hover {
+  color: var(--navy);
+}
 
 /* Admin */
 .admin-login {

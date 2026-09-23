@@ -58,7 +58,12 @@ export function Footer() {
         <span>Tradition / Taste / Togetherness</span>
         <span>
           Created by{" "}
-          <a href="https://www.nexmogen.com" target="_blank" rel="noopener noreferrer">
+          <a
+            className="nexmogen-link"
+            href="https://www.nexmogen.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Nexmogen
           </a>
         </span>
