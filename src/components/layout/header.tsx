@@ -34,10 +34,10 @@ export function Header() {
         <Link href="/" className="header-logo" aria-label="Sawariyawala home">
           <Image
             className="header-logo-image"
-            src="/assets/brand/logo-primary.png"
+            src="/assets/brand/logo-mark.png"
             alt="Sawariyawala Food and Caterers"
-            width={1130}
-            height={883}
+            width={645}
+            height={575}
             priority
           />
           <Image
