@@ -2976,6 +2976,14 @@ p {
   font-size: 0.72rem;
   color: #6f665c;
 }
+.footer-bottom a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer-bottom a:hover {
+  color: var(--saffron);
+}
 
 /* Admin */
 .admin-login {
