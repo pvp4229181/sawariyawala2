@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "@/styles/globals.css";
+import "@/styles/mobile.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { MobileDock } from "@/components/layout/mobile-dock";
 import { Providers } from "@/components/layout/providers";
 import { siteConfig } from "@/config/site";
 
@@ -40,6 +42,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <MobileDock />
         </Providers>
       </body>
     </html>
