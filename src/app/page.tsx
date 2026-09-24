@@ -2,308 +2,289 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  Award,
-  ChefHat,
-  Clock3,
-  Heart,
+  CalendarDays,
+  Check,
+  HeartHandshake,
   Leaf,
-  ShieldCheck,
-  ShoppingBag,
+  Phone,
   Sparkles,
-  Truck,
+  Users,
 } from "lucide-react";
-import { ProductCard } from "@/components/menu/product-card";
-import { seedProducts } from "@/data/seed-products";
+import { siteConfig } from "@/config/site";
+import {
+  cateringFormats,
+  cateringProcess,
+  cateringScales,
+} from "@/data/catering-services";
 
-const benefits = [
+const occasions = [
   {
-    icon: Leaf,
-    title: "Fresh Ingredients",
-    copy: "Carefully chosen produce and pantry staples.",
+    number: "01",
+    title: "Weddings & family celebrations",
+    copy: "From mehendi evenings to milestone birthdays, we plan the menu and service around the mood of your occasion.",
   },
   {
-    icon: ChefHat,
-    title: "Authentic Taste",
-    copy: "Familiar flavours, thoughtfully prepared.",
+    number: "02",
+    title: "Corporate & community events",
+    copy: "Reliable timing, smart presentation and flexible formats for offices, societies, festivals and large gatherings.",
   },
   {
-    icon: ShieldCheck,
-    title: "Hygienic Preparation",
-    copy: "Clean, disciplined kitchen practices.",
-  },
-  {
-    icon: Truck,
-    title: "Fast Delivery",
-    copy: "Packed with care and sent without fuss.",
+    number: "03",
+    title: "Intimate gatherings",
+    copy: "Thoughtful catering for poojas, housewarmings and private parties, without the stress of managing service yourself.",
   },
 ];
 
-const reviews = [
-  {
-    name: "Aarav M.",
-    initials: "AM",
-    quote: "The menu was easy to browse and everything arrived neatly packed.",
-  },
-  {
-    name: "Meera S.",
-    initials: "MS",
-    quote:
-      "A polished experience with the comfort of familiar Indian flavours.",
-  },
-  {
-    name: "Kabir R.",
-    initials: "KR",
-    quote: "The catering presentation felt warm, thoughtful and effortless.",
-  },
-  {
-    name: "Riya P.",
-    initials: "RP",
-    quote:
-      "From the first enquiry to the final serving, every detail felt simple, fresh and well cared for.",
-  },
-];
-
-const guestBenefits = [
-  {
-    icon: ChefHat,
-    title: "Food-first menus",
-    copy: "A focused selection built for flavour, clarity and quick decisions.",
-  },
-  {
-    icon: Heart,
-    title: "Warm hospitality",
-    copy: "Friendly service and thoughtful details from counter to doorstep.",
-  },
-  {
-    icon: ShoppingBag,
-    title: "Easy enquiries",
-    copy: "A simple path to explore the menu and plan food for your occasion.",
-  },
-  {
-    icon: Award,
-    title: "Catering that scales",
-    copy: "A flexible food experience for intimate gatherings and large events.",
-  },
+const servicePromises = [
+  "Pure vegetarian kitchen",
+  "Jain and no-onion-no-garlic options",
+  "Setup, serving and pack-down support",
 ];
 
 export default function Home() {
-  const featured = seedProducts.filter((p) => p.featured).slice(0, 4);
   return (
-    <main>
-      <section className="home-hero">
-        <Image
-          src="/assets/editorial/home-hero.webp"
-          alt="An abundant spread of Indian street-food favourites"
-          fill
-          priority
-          sizes="100vw"
-        />
-        <div className="hero-shade" />
-        <div className="shell hero-copy">
-          <span className="eyebrow light">Authentic Indian Street Food</span>
+    <main className="catering-home">
+      <section className="catering-home-hero">
+        <video
+          className="catering-home-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/assets/editorial/hospitality.webp"
+          aria-hidden="true"
+        >
+          <source
+            src="/assets/video/catering-staff-hero-clean.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div className="catering-home-hero-shade" />
+        <div className="shell catering-home-hero-copy">
+          <span className="eyebrow light">Catering for every gathering</span>
           <h1>
-            Real Flavours.
-            <br />
-            <em>
-              Timeless
-              <br />
-              Traditions.
-            </em>
+            You celebrate.{" "}
+            <em>We take care of the rest.</em>
           </h1>
           <p>
-            Street-food favourites, festive catering and warm hospitality -
-            brought together with a premium Sawariyawala touch.
+            Warm Indian hospitality for weddings, office events, poojas and
+            private celebrations—with menus, counters and service shaped around
+            your guests.
           </p>
           <div className="hero-actions">
-            <Link href="/catering" className="button">
-              Plan an Event <ArrowRight />
+            <Link href="/catering#enquiry" className="button">
+              Plan Your Event <ArrowRight aria-hidden="true" />
             </Link>
-            <Link href="/menu" className="button ghost">
-              Explore Menu
-            </Link>
+            <a className="button ghost" href={`tel:${siteConfig.phone}`}>
+              <Phone aria-hidden="true" /> Talk to Our Team
+            </a>
           </div>
-          <div className="hero-mini">
+          <div className="catering-home-hero-notes">
             <span>
-              <Clock3 />
-              Made fresh
+              <Users aria-hidden="true" /> 20 to 500+ guests
             </span>
             <span>
-              <Leaf />
-              Pure vegetarian
+              <Leaf aria-hidden="true" /> Pure vegetarian
             </span>
             <span>
-              <Heart />
-              Made for sharing
+              <HeartHandshake aria-hidden="true" /> Complete event support
             </span>
           </div>
         </div>
       </section>
-      <section className="trust-strip shell">
-        {benefits.map(({ icon: Icon, title, copy }) => (
-          <div key={title}>
-            <Icon />
-            <span>
-              <b>{title}</b>
-              <small>{copy}</small>
-            </span>
-          </div>
-        ))}
-      </section>
-      <section className="section shell">
-        <div className="section-heading split">
-          <div>
-            <span className="eyebrow">Crowd favourites</span>
-            <h2>
-              Meet the <em>bestsellers</em>
-            </h2>
-          </div>
-          <Link href="/menu" className="text-link">
-            View all dishes <ArrowRight />
-          </Link>
-        </div>
-        <div className="product-grid">
-          {featured.map((product) => (
-            <ProductCard key={product.slug} product={product} />
-          ))}
-        </div>
-      </section>
-      <section className="story-teaser">
-        <div className="shell story-grid">
-          <div className="story-image">
-            <Image
-              src="/assets/editorial/story-stall.webp"
-              alt="Sawariyawala storefront brand concept"
-              fill
-              sizes="(max-width: 800px) 100vw, 50vw"
-            />
-          </div>
-          <div className="story-copy">
-            <span className="eyebrow light">Our philosophy</span>
-            <h2>
-              More than food.
-              <br />
-              <em>It is a feeling.</em>
-            </h2>
-            <p>
-              Sawariyawala brings Indian street-food culture into a polished
-              hospitality experience. Food stays at the centre; the details
-              around it add warmth, care and a sense of occasion.
-            </p>
-            <ul>
-              <li>
-                <Sparkles />
-                Recognisable Indian flavours
-              </li>
-              <li>
-                <Award />
-                Premium, restrained presentation
-              </li>
-              <li>
-                <Heart />
-                Service shaped around togetherness
-              </li>
-            </ul>
-            <Link href="/our-story" className="button">
-              Discover Our Story <ArrowRight />
-            </Link>
-          </div>
-        </div>
-      </section>
-      <section className="section shell">
-        <div className="section-heading center">
-          <span className="eyebrow">Why guests choose us</span>
+
+      <section className="section shell catering-home-intro">
+        <div className="catering-home-intro-copy">
+          <span className="eyebrow">Hospitality, handled</span>
           <h2>
-            Food that brings <em>people together</em>
+            A celebration should feel
+            <br />
+            <em>effortless to host.</em>
           </h2>
           <p>
-            Every detail is designed to make everyday cravings and special
-            occasions feel equally cared for.
+            Tell us your date, venue, guest count and occasion. We will help
+            shape the right service format, coordinate the details and keep the
+            experience moving smoothly from setup to the final serving.
           </p>
+          <ul className="catering-home-checks">
+            {servicePromises.map((promise) => (
+              <li key={promise}>
+                <Check aria-hidden="true" /> {promise}
+              </li>
+            ))}
+          </ul>
+          <Link href="/catering" className="text-link">
+            Explore catering services <ArrowRight aria-hidden="true" />
+          </Link>
         </div>
-        <div className="benefit-grid">
-          {guestBenefits.map(({ icon: Icon, title, copy }, index) => (
-            <article key={title}>
-              <div className="benefit-card-inner">
-                <div className="benefit-card-head">
-                  <span>0{index + 1}</span>
-                  <i>
-                    <Icon />
-                  </i>
-                </div>
+        <div className="catering-home-intro-visual">
+          <div className="catering-home-image">
+            <Image
+              src="/assets/editorial/packaging.webp"
+              alt="Elegant Sawariyawala catering setup and packaging"
+              fill
+              sizes="(max-width: 800px) 100vw, 48vw"
+            />
+          </div>
+          <div className="catering-home-quote">
+            <Sparkles aria-hidden="true" />
+            <p>Planned around your occasion, not pulled from a template.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section catering-home-occasions">
+        <div className="shell">
+          <div className="section-heading split">
+            <div>
+              <span className="eyebrow">Made for your moment</span>
+              <h2>
+                Every kind of gathering,
+                <br />
+                <em>thoughtfully served.</em>
+              </h2>
+            </div>
+            <p>
+              Big hall or family home, formal run sheet or relaxed evening—we
+              adapt the service to the way you want to host.
+            </p>
+          </div>
+          <div className="catering-home-occasion-grid">
+            {occasions.map(({ number, title, copy }) => (
+              <article key={number}>
+                <span>{number}</span>
                 <h3>{title}</h3>
                 <p>{copy}</p>
-              </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section shell">
+        <div className="section-heading center">
+          <span className="eyebrow">Choose how we serve</span>
+          <h2>
+            The right format for
+            <br />
+            <em>your space and schedule.</em>
+          </h2>
+        </div>
+        <div className="catering-home-format-grid">
+          {cateringFormats.map(({ icon: Icon, title, copy }) => (
+            <article key={title}>
+              <i aria-hidden="true">
+                <Icon />
+              </i>
+              <h3>{title}</h3>
+              <p>{copy}</p>
             </article>
           ))}
         </div>
       </section>
-      <section className="quality-banner shell">
-        <Image
-          src="/assets/editorial/quality-banner.webp"
-          alt="Sawariyawala premium service counter"
-          fill
-          sizes="100vw"
-        />
-        <div className="quality-overlay" />
-        <div>
-          <span className="eyebrow light">Taste. Tradition. Togetherness.</span>
-          <h2>
-            Good food.
-            <br />
-            <em>Brighter moments.</em>
-          </h2>
-          <Link href="/catering" className="button">
-            Plan an Event <ArrowRight />
-          </Link>
+
+      <section className="section catering-home-scale">
+        <div className="shell">
+          <div className="catering-home-scale-heading">
+            <div>
+              <span className="eyebrow light">From close-knit to grand</span>
+              <h2>
+                Your guest list can grow.
+                <br />
+                <em>Our care stays personal.</em>
+              </h2>
+            </div>
+            <p>
+              We scale the kitchen plan, team and setup to suit your headcount
+              while keeping one clear point of contact throughout.
+            </p>
+          </div>
+          <div className="catering-home-scale-grid">
+            {cateringScales.map(({ guests, title, copy }) => (
+              <article key={title}>
+                <strong>{guests}</strong>
+                <span>guests</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
-      <section
-        className="food-strip"
-        aria-label="A celebration of Indian street food"
-      >
-        <Image
-          src="/assets/banner-ai/home-food-panorama-v3.png"
-          alt="An illustrated Indian street-food courtyard with chefs, diners and Sawariyawala favourites"
-          fill
-          sizes="100vw"
-        />
+
+      <section className="section shell catering-home-process">
+        <div className="section-heading center">
+          <span className="eyebrow">Simple from the start</span>
+          <h2>
+            Four steps to a
+            <br />
+            <em>well-served celebration.</em>
+          </h2>
+        </div>
+        <div className="catering-home-process-grid">
+          {cateringProcess.map(({ number, title, copy }) => (
+            <article key={number}>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
       </section>
-      <section className="section testimonials">
-        <div className="shell">
-          <div className="section-heading center">
-            <span className="eyebrow">Happy customers</span>
+
+      <section className="shell catering-home-menu-bridge">
+        <div>
+          <span className="eyebrow">Looking for individual dishes?</span>
+          <h2>
+            Our food lives in the <em>Menu.</em>
+          </h2>
+          <p>
+            Browse the full collection, discover favourites and order dishes
+            separately from your catering enquiry.
+          </p>
+        </div>
+        <Link href="/menu" className="button outline">
+          Explore the Menu <ArrowRight aria-hidden="true" />
+        </Link>
+      </section>
+
+      <section className="catering-home-cta">
+        <div className="shell catering-home-cta-card">
+          <div className="catering-home-cta-copy">
+            <i aria-hidden="true">
+              <CalendarDays />
+            </i>
+            <span className="eyebrow light">Have a date in mind?</span>
             <h2>
-              Kind words, <em>warm moments</em>
+              Your celebration,
+              <br />
+              <em>beautifully handled.</em>
             </h2>
+            <p>
+              Share your occasion, venue and guest count. We will help shape a
+              service plan that feels right for your room and your guests.
+            </p>
+            <div className="catering-home-cta-actions">
+              <Link href="/catering#enquiry" className="button">
+                Start Your Enquiry <ArrowRight aria-hidden="true" />
+              </Link>
+              <a className="text-link" href={`tel:${siteConfig.phone}`}>
+                <Phone aria-hidden="true" /> Talk to our team
+              </a>
+            </div>
           </div>
-          <div className="testimonial-grid" aria-label="Customer reviews">
-            <div className="testimonial-track">
-              {[0, 1].map((loop) => (
-                <div
-                  className="testimonial-set"
-                  aria-hidden={loop === 1 ? true : undefined}
-                  key={loop}
-                >
-                  {reviews.map(({ name, initials, quote }, index) => (
-                    <blockquote key={`${loop}-${name}`}>
-                      <div className="testimonial-card-top">
-                        <span aria-label="5 out of 5 stars">★★★★★</span>
-                        <small aria-hidden="true">
-                          {String(index + 1).padStart(2, "0")}
-                        </small>
-                      </div>
-                      <p>“{quote}”</p>
-                      <footer>
-                        <span aria-hidden="true">{initials}</span>
-                        <cite>
-                          {name}
-                          <small>Demo testimonial — editable</small>
-                        </cite>
-                      </footer>
-                    </blockquote>
-                  ))}
-                </div>
-              ))}
+          <div className="catering-home-cta-visual">
+            <Image
+              src="/assets/hero-ai/home-enquiry-catering.webp"
+              alt="Catering team arranging an elegant evening buffet"
+              fill
+              sizes="(max-width: 800px) 100vw, 50vw"
+            />
+            <div className="catering-home-cta-caption">
+              <span>Weddings</span>
+              <span>Corporate</span>
+              <span>Celebrations</span>
             </div>
           </div>
         </div>

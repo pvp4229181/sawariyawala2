@@ -50,7 +50,7 @@ export default function Story() {
           </>
         }
         copy="A modern food and hospitality identity shaped by Indian street-food culture, thoughtful service and subtle symbolic detail."
-        image="/assets/hero-ai/our-story-hero-v2.png"
+        image="/assets/hero-ai/story-hero-editorial.webp"
       />
       <section className="section shell editorial-split">
         <div>

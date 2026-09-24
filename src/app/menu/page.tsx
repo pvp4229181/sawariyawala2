@@ -36,7 +36,7 @@ export default async function MenuPage() {
           </>
         }
         copy="Easy-to-love Indian street food, clearly organised and ready to explore."
-        image="/assets/hero-ai/menu-hero-v2.png"
+        image="/assets/hero-ai/menu-hero-editorial.webp"
       />
       <MenuExplorer products={await products()} />
     </main>

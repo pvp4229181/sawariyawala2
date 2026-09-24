@@ -33,7 +33,7 @@ export default function Catering() {
           </>
         }
         copy="From intimate celebrations to corporate counters, create an Indian food experience that feels unmistakably yours."
-        image="/assets/editorial/hospitality.webp"
+        image="/assets/hero-ai/catering-hero-editorial.webp"
       />
 
       <section className="section shell">

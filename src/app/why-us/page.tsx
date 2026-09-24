@@ -59,7 +59,7 @@ export default function WhyUs() {
           </>
         }
         copy="A balanced mix of familiar flavour, clean presentation and service that makes every order feel considered."
-        image="/assets/hero-ai/why-us-hero-v2.png"
+        image="/assets/hero-ai/why-us-hero-editorial.webp"
       />
       <section className="section shell">
         <div className="icon-card-grid">

@@ -5,6 +5,7 @@ import { PageHero } from "@/components/ui/page-hero";
 import { siteConfig } from "@/config/site";
 export const metadata: Metadata = { title: "Contact" };
 export default function Contact() {
+  const [hoursDays, hoursTime] = siteConfig.hours.split(": ");
   return (
     <main>
       <PageHero
@@ -17,7 +18,7 @@ export default function Contact() {
           </>
         }
         copy="Questions, party orders or catering plans? Tell us what you need and our team will follow up."
-        image="/assets/hero-ai/contact-hero-v2.png"
+        image="/assets/hero-ai/contact-hero-editorial.webp"
       />
       <section className="section shell contact-grid">
         <div className="contact-info">
@@ -29,32 +30,35 @@ export default function Contact() {
           </h2>
           <div className="contact-cards">
             <a href={siteConfig.mapsUrl}>
-              <MapPin />
-              <span>
-                <b>Visit us</b>
-                <small>{siteConfig.address}</small>
-              </span>
+              <i>
+                <MapPin aria-hidden="true" />
+              </i>
+              <small>Visit us</small>
+              <b>{siteConfig.address}</b>
             </a>
             <a href={`tel:${siteConfig.phone}`}>
-              <Phone />
-              <span>
-                <b>Call us</b>
-                <small>{siteConfig.phone}</small>
-              </span>
+              <i>
+                <Phone aria-hidden="true" />
+              </i>
+              <small>Call us</small>
+              <b>{siteConfig.phone}</b>
             </a>
             <a href={`mailto:${siteConfig.email}`}>
-              <Mail />
-              <span>
-                <b>Email</b>
-                <small>{siteConfig.email}</small>
-              </span>
+              <i>
+                <Mail aria-hidden="true" />
+              </i>
+              <small>Email</small>
+              <b>{siteConfig.email}</b>
             </a>
             <div>
-              <Clock3 />
-              <span>
-                <b>Opening hours</b>
-                <small>{siteConfig.hours}</small>
-              </span>
+              <i>
+                <Clock3 aria-hidden="true" />
+              </i>
+              <small>Opening hours</small>
+              <b>
+                {hoursDays}
+                {hoursTime && <span>{hoursTime}</span>}
+              </b>
             </div>
           </div>
           <div className="static-map">
